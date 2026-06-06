@@ -214,6 +214,9 @@ function normName(s){
 function buildNameMap(key){
   const m={};
   GDATA[key].cities.forEach(c=>m[normName(c.name)]=c.id);
+  // aliases: GeoJSON may use short names
+  if(m['afyonkarahisar']&&!m['afyon']) m['afyon']=m['afyonkarahisar'];
+  if(m['afyon']&&!m['afyonkarahisar']) m['afyonkarahisar']=m['afyon'];
   NAMEMAP[key]=m;
 }
 
@@ -645,8 +648,10 @@ function buildMap(svgEl,mapKey){
     if(!cid) return;
     const pstr=pathGen(feat);
     if(!pstr) return;
-    const ctr=pathGen.centroid(feat);
-    if(!ctr||isNaN(ctr[0])||isNaN(ctr[1])) return;
+    let x1=Infinity,x2=-Infinity,y1=Infinity,y2=-Infinity;
+    getAllRings(feat.geometry).flat().forEach(c=>{const p=proj(c);if(!p)return;if(p[0]<x1)x1=p[0];if(p[0]>x2)x2=p[0];if(p[1]<y1)y1=p[1];if(p[1]>y2)y2=p[1];});
+    const ctr=isFinite(x1)?[(x1+x2)/2,(y1+y2)/2]:[NaN,NaN];
+    if(isNaN(ctr[0])||isNaN(ctr[1])) return;
     const g=document.createElementNS('http://www.w3.org/2000/svg','g');
     g.className='il';g.id='il'+cid;
     if(OWN[1].has(cid)) g.classList.add('p1');
