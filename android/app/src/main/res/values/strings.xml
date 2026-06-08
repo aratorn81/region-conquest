@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Bölge Kapma</string>
+    <string name="title_activity_main">Bölge Kapma</string>
+    <string name="package_name">com.bahceci.bolgekapma</string>
+    <string name="custom_url_scheme">com.bahceci.bolgekapma</string>
+</resources>

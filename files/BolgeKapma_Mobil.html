@@ -13,9 +13,16 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;user-select:none;touch-action:manipulation}
 html,body{height:100%;overflow:hidden;background:#0f0c29;font-family:'Nunito',system-ui,sans-serif}
 #app{height:100vh;display:flex;flex-direction:column;overflow:hidden}
+#audio-switch{position:fixed;top:10px;left:12px;z-index:50;display:flex;gap:8px;background:rgba(0,0,0,0.35);padding:6px;border-radius:16px;backdrop-filter:blur(4px)}
+.audio-btn{border:1px solid rgba(255,255,255,0.35);background:rgba(255,255,255,0.18);color:#fff;font-size:18px;width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:opacity .15s,background .15s;box-shadow:0 2px 6px rgba(0,0,0,0.3)}
+.audio-btn.off{opacity:0.4;background:rgba(255,255,255,0.06)}
+.audio-btn:active{transform:scale(0.92)}
 
 /* MENU */
-#screen-menu{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 16px;gap:14px;background:linear-gradient(160deg,#0f0c29,#302b63,#24243e);overflow-y:auto}
+#screen-menu{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 16px;gap:14px;background:linear-gradient(160deg,#0f0c29,#302b63,#24243e);overflow-y:auto}
+#lang-switch{position:absolute;top:10px;right:12px;display:flex;gap:6px;z-index:5}
+.lang-btn{border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.6);font-size:11px;font-weight:800;padding:5px 10px;border-radius:50px;cursor:pointer;font-family:'Nunito',system-ui,sans-serif}
+.lang-btn.sel{border-color:#fff;color:#fff;background:rgba(255,255,255,0.18)}
 .logo{font-size:52px;animation:float 3s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .title{color:#fff;font-size:26px;font-weight:900;text-align:center;letter-spacing:-1px}
@@ -38,7 +45,13 @@ html,body{height:100%;overflow:hidden;background:#0f0c29;font-family:'Nunito',sy
 .mode-card .mi{font-size:24px;margin-bottom:4px}
 .mode-card .mm{color:#fff;font-size:13px;font-weight:800}
 .mode-card .md{color:rgba(255,255,255,0.5);font-size:10px;margin-top:2px}
-#card-2p{background:linear-gradient(135deg,rgba(231,76,60,0.25),rgba(41,128,185,0.25))}
+#card-2p{background:linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))}
+#opp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;width:100%;max-width:360px}
+.opp-card{border-radius:14px;border:2px solid transparent;padding:10px 6px;cursor:pointer;text-align:center;transition:all .15s;background:rgba(255,255,255,0.06)}
+.opp-card:active{transform:scale(0.94)}
+.opp-card.sel{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,0.2);background:rgba(255,255,255,0.12)}
+.opp-card .oi{font-size:20px;font-weight:900;color:#fff;margin-bottom:2px}
+.opp-card .om{color:rgba(255,255,255,0.55);font-size:10px;font-weight:700}
 #card-easy{background:linear-gradient(135deg,rgba(39,174,96,0.3),rgba(39,174,96,0.1))}
 #card-normal{background:linear-gradient(135deg,rgba(243,156,18,0.3),rgba(243,156,18,0.1))}
 #card-hard{background:linear-gradient(135deg,rgba(192,57,43,0.35),rgba(192,57,43,0.15))}
@@ -49,12 +62,17 @@ html,body{height:100%;overflow:hidden;background:#0f0c29;font-family:'Nunito',sy
 #screen-game{flex:1;display:none;flex-direction:column;background:linear-gradient(180deg,#0f0c29,#1a1a3e);overflow:hidden;padding:10px 10px 6px}
 #topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-shrink:0}
 .tbadge{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);font-size:10px;font-weight:800;padding:5px 10px;border-radius:50px;letter-spacing:.5px}
-#scores{display:flex;gap:8px;margin-bottom:8px;flex-shrink:0}
+#scores{display:flex;gap:8px;margin-bottom:8px;flex-shrink:0;flex-wrap:wrap}
+#scores .sc{min-width:64px}
 .sc{flex:1;border-radius:14px;padding:10px 8px;text-align:center;border:2.5px solid transparent;transition:border-color .2s,box-shadow .2s}
 #sc1{background:rgba(192,57,43,0.25)}
 #sc2{background:rgba(59,130,246,0.2)}
+#sc3{background:rgba(245,166,35,0.2)}
+#sc4{background:rgba(155,89,182,0.22)}
 #sc1.active{border-color:#e74c3c;box-shadow:0 0 14px rgba(231,76,60,0.3)}
 #sc2.active{border-color:#3b82f6;box-shadow:0 0 14px rgba(59,130,246,0.35)}
+#sc3.active{border-color:#f5a623;box-shadow:0 0 14px rgba(245,166,35,0.35)}
+#sc4.active{border-color:#9b59b6;box-shadow:0 0 14px rgba(155,89,182,0.35)}
 .sc .lbl{font-size:9px;font-weight:800;letter-spacing:.8px;color:rgba(255,255,255,0.6);margin-bottom:2px}
 .sc .num{font-size:26px;font-weight:900;color:#fff;line-height:1}
 .sc .prow{border-top:1px solid rgba(255,255,255,0.08);margin-top:6px;padding-top:6px;display:flex;justify-content:center;align-items:baseline;gap:4px}
@@ -67,8 +85,10 @@ html,body{height:100%;overflow:hidden;background:#0f0c29;font-family:'Nunito',sy
 .il path{fill:#5cb85c;stroke:none;cursor:pointer}
 .il.p1 path{fill:#e74c3c}
 .il.p2 path{fill:#3b82f6}
+.il.p3 path{fill:#f5a623}
+.il.p4 path{fill:#9b59b6}
 .il text{pointer-events:none;font-family:'Nunito',system-ui,sans-serif;font-weight:700;fill:rgba(0,0,0,0.55)}
-.il.p1 text,.il.p2 text{fill:rgba(255,255,255,0.9)}
+.il.p1 text,.il.p2 text,.il.p3 text,.il.p4 text{fill:rgba(255,255,255,0.9)}
 #ai-bar{text-align:center;padding:4px 0;flex-shrink:0;display:none}
 .ai-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.4);color:#93c5fd;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700}
 .dot{width:4px;height:4px;border-radius:50%;background:#93c5fd;animation:blink 1s ease-in-out infinite}
@@ -84,10 +104,12 @@ html,body{height:100%;overflow:hidden;background:#0f0c29;font-family:'Nunito',sy
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 #result-title{font-size:22px;font-weight:900;color:#fff;margin-bottom:5px}
 #result-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:12px;line-height:1.5}
-#result-scores{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
+#result-scores{display:flex;gap:8px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
 .rs{padding:10px 16px;border-radius:12px;text-align:center;min-width:90px}
 #rs1{background:rgba(231,76,60,0.25);border:1px solid rgba(231,76,60,0.4)}
 #rs2{background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.4)}
+#rs3{background:rgba(245,166,35,0.2);border:1px solid rgba(245,166,35,0.4)}
+#rs4{background:rgba(155,89,182,0.22);border:1px solid rgba(155,89,182,0.4)}
 .rs .rl{font-size:9px;color:rgba(255,255,255,0.5);font-weight:800;letter-spacing:.5px;margin-bottom:3px}
 .rs .rn{font-size:22px;font-weight:900;color:#fff}
 .rs .rp{font-size:10px;color:rgba(255,255,255,0.5);font-weight:700}
@@ -96,79 +118,110 @@ html,body{height:100%;overflow:hidden;background:#0f0c29;font-family:'Nunito',sy
 #btn-menu{width:100%;padding:12px;border-radius:50px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.6);font-size:13px;font-weight:700;cursor:pointer;font-family:'Nunito',system-ui,sans-serif}
 
 canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:999;width:100%;height:100%}
+
+/* LANDSCAPE PHONES — game is designed to be played sideways so the wide map fits the screen */
+@media (orientation:landscape) and (max-height:520px){
+  #screen-menu{flex-direction:row;flex-wrap:wrap;justify-content:center;align-content:center;gap:8px 16px;padding:10px 16px}
+  #screen-menu .logo{font-size:30px;align-self:center}
+  #screen-menu .title{font-size:18px}
+  #screen-menu .badge{font-size:10px}
+  #screen-menu .sec-lbl{margin-top:2px}
+  #map-grid,#mode-grid,#opp-grid{max-width:300px}
+  #start-btn{max-width:300px;padding:12px}
+  #screen-game{padding:6px 8px 4px}
+  #topbar{margin-bottom:5px}
+  #scores{margin-bottom:5px}
+  .sc{padding:6px 6px}
+  .sc .num{font-size:20px}
+  .sc .pnum{font-size:15px}
+  .sc .prow{margin-top:3px;padding-top:3px}
+  #ai-bar{padding:2px 0}
+}
 </style>
 </head>
 <body>
 <div id="app">
 <canvas id="cnv"></canvas>
+<div id="audio-switch">
+  <button class="audio-btn" id="btn-music" onclick="toggleMusic()" title="Müzik" data-i18n-title="musicToggle">🎵</button>
+  <button class="audio-btn" id="btn-sfx" onclick="toggleSfx()" title="Efekt" data-i18n-title="sfxToggle">🔊</button>
+</div>
 
 <div id="screen-menu">
+  <div id="lang-switch">
+    <button class="lang-btn sel" id="lang-tr" onclick="setLang('tr')">🇹🇷 TR</button>
+    <button class="lang-btn" id="lang-en" onclick="setLang('en')">🇬🇧 EN</button>
+  </div>
   <div class="logo">🌍</div>
-  <div class="title">Region Conquest</div>
-  <div class="badge">⚔️ MOST FRAGMENTED PLAYER LOSES!</div>
-  <div class="sec-lbl">🗺️ Select Country</div>
+  <div class="title" data-i18n="appTitle">Bölge Kapma</div>
+  <div class="badge" data-i18n="badge">⚔️ EN PARÇALI OYUNCU KAYBEDER!</div>
+  <div class="sec-lbl" data-i18n="selectCountry">🗺️ Ülke Seç</div>
   <div id="map-grid">
     <div class="map-card sel" id="card-tr" onclick="selMap('turkey')">
       <div class="flag">🇹🇷</div>
-      <div class="mn">Turkey</div>
-      <div class="mc">81 provinces</div>
+      <div class="mn" data-i18n="countryTurkey">Türkiye</div>
+      <div class="mc" data-i18n="countryTurkeyDesc">81 il</div>
     </div>
-    <div class="map-card" id="card-us" onclick="selMap('usa')">
+    <div class="map-card" id="card-us" style="display:none" onclick="selMap('usa')">
       <div class="flag">🇺🇸</div>
       <div class="mn">USA</div>
       <div class="mc">49 states</div>
     </div>
-    <div class="map-card" id="card-fr" onclick="selMap('france')">
+    <div class="map-card" id="card-fr" style="display:none" onclick="selMap('france')">
       <div class="flag">🇫🇷</div>
       <div class="mn">France</div>
       <div class="mc">96 regions</div>
     </div>
   </div>
-  <div class="sec-lbl">⚔️ Select Mode</div>
+  <div class="sec-lbl" data-i18n="selectMode">⚔️ Mod Seç</div>
   <div id="mode-grid">
-    <div class="mode-card sel" id="card-2p" onclick="selMode('2p')">
-      <div class="mi">👥</div>
-      <div class="mm">2 Players</div>
-      <div class="md">Same screen</div>
-    </div>
     <div class="mode-card" id="card-easy" onclick="selMode('easy')">
       <div class="mi">🟢</div>
-      <div class="mm">Easy AI</div>
-      <div class="md">Beginner</div>
+      <div class="mm" data-i18n="modeEasy">Çaylak Vali</div>
+      <div class="md" data-i18n="modeEasyDesc">Başlangıç</div>
     </div>
-    <div class="mode-card" id="card-normal" onclick="selMode('normal')">
+    <div class="mode-card sel" id="card-normal" onclick="selMode('normal')">
       <div class="mi">🟡</div>
-      <div class="mm">Normal AI</div>
-      <div class="md">Intermediate</div>
+      <div class="mm" data-i18n="modeNormal">Stratejist</div>
+      <div class="md" data-i18n="modeNormalDesc">Orta</div>
     </div>
     <div class="mode-card" id="card-hard" onclick="selMode('hard')">
       <div class="mi">🔴</div>
-      <div class="mm">Hard AI</div>
-      <div class="md">Expert</div>
+      <div class="mm" data-i18n="modeHard">Komutan</div>
+      <div class="md" data-i18n="modeHardDesc">Uzman</div>
+    </div>
+    <div class="mode-card" id="card-2p" onclick="selMode('2p')">
+      <div class="mi">👥</div>
+      <div class="mm" data-i18n="mode2p">2 Oyuncu</div>
+      <div class="md" data-i18n="mode2pDesc">Aynı ekran</div>
     </div>
   </div>
-  <button id="start-btn" onclick="startGame()">🎮 Start Game</button>
+  <div class="sec-lbl" id="opp-count-lbl" data-i18n="selectOppCount">🎯 Rakip Sayısı</div>
+  <div id="opp-grid">
+    <div class="opp-card sel" id="card-opp1" onclick="selOpp(1)">
+      <div class="oi">1</div>
+      <div class="om" data-i18n="opp1">1 Rakip</div>
+    </div>
+    <div class="opp-card" id="card-opp2" onclick="selOpp(2)">
+      <div class="oi">2</div>
+      <div class="om" data-i18n="opp2">2 Rakip</div>
+    </div>
+    <div class="opp-card" id="card-opp3" onclick="selOpp(3)">
+      <div class="oi">3</div>
+      <div class="om" data-i18n="opp3">3 Rakip</div>
+    </div>
+  </div>
+  <button id="start-btn" onclick="startGame()" data-i18n="startGame">🎮 Oyunu Başlat</button>
 </div>
 
 <div id="screen-game">
   <div id="topbar">
     <div class="tbadge" id="turn-badge">🔴 Your Turn</div>
-    <button id="home-btn" onclick="confirmHome()" title="Main Menu">🏠</button>
+    <button id="home-btn" onclick="confirmHome()" title="Main Menu" data-i18n-title="mainMenu">🏠</button>
     <div class="tbadge" id="rem-badge">— left</div>
   </div>
-  <div id="scores">
-    <div id="sc1" class="sc active">
-      <div class="lbl">🔴 RED</div>
-      <div class="num" id="n1">0</div>
-      <div class="prow"><div class="pnum" id="pc1">0</div><div class="plbl">pieces</div></div>
-    </div>
-    <div id="sc2" class="sc">
-      <div class="lbl" id="lbl2">🔵 BLUE</div>
-      <div class="num" id="n2">0</div>
-      <div class="prow"><div class="pnum" id="pc2">0</div><div class="plbl">pieces</div></div>
-    </div>
-  </div>
-  <div id="ai-bar"><div class="ai-pill"><div class="dot"></div><div class="dot"></div><div class="dot"></div> AI thinking...</div></div>
+  <div id="scores"></div>
+  <div id="ai-bar"><div class="ai-pill"><div class="dot"></div><div class="dot"></div><div class="dot"></div> <span data-i18n="aiThinking">AI thinking...</span></div></div>
   <div id="mapwrap"><svg id="svg" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet"></svg></div>
 </div>
 
@@ -178,13 +231,10 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:999;width:100%;he
     <div id="result-icon"></div>
     <div id="result-title"></div>
     <div id="result-sub"></div>
-    <div id="result-scores">
-      <div class="rs" id="rs1"><div class="rl">RED</div><div class="rn" id="rs1n">0</div><div class="rp">pieces</div></div>
-      <div class="rs" id="rs2"><div class="rl" id="rs2l">BLUE</div><div class="rn" id="rs2n">0</div><div class="rp">pieces</div></div>
-    </div>
-    <button id="btn-share" onclick="shareResult()">📤 Share Result</button>
-    <button id="btn-again" onclick="rematch()">🔄 Play Again</button>
-    <button id="btn-menu" onclick="goMenu()">🏠 Main Menu</button>
+    <div id="result-scores"></div>
+    <button id="btn-share" onclick="shareResult()" data-i18n="shareResult">📤 Share Result</button>
+    <button id="btn-again" onclick="rematch()" data-i18n="playAgain">🔄 Play Again</button>
+    <button id="btn-menu" onclick="goMenu()" data-i18n="mainMenu">🏠 Main Menu</button>
   </div>
 </div>
 </div>
@@ -561,11 +611,173 @@ Object.keys(GDATA).forEach(k=>{
   if(!Array.isArray(GDATA[k].adj)) GDATA[k].adj=normAdj(GDATA[k].adj);
 });
 
-let MAP='turkey', MODE='2p';
+// i18n
+const I18N={
+  tr:{
+    appTitle:'Bölge Kapma',
+    badge:'⚔️ EN PARÇALI OYUNCU KAYBEDER!',
+    selectCountry:'🗺️ Ülke Seç',
+    selectMode:'⚔️ Mod Seç',
+    countryTurkey:'Türkiye',
+    countryTurkeyDesc:'81 il',
+    mode2p:'2 Oyuncu',
+    mode2pDesc:'Aynı ekran',
+    modeEasy:'Çaylak Vali',
+    modeEasyDesc:'Başlangıç',
+    modeNormal:'Stratejist',
+    modeNormalDesc:'Orta',
+    modeHard:'Komutan',
+    modeHardDesc:'Uzman',
+    startGame:'🎮 Oyunu Başlat',
+    yourTurn:'🔴 Sıra Sende',
+    opponentTurn:'🔵 Rakip Sırası',
+    aiThinking:'🤖 YZ düşünüyor...',
+    pieces:'parça',
+    left:'kaldı',
+    redLabel:'🔴 KIRMIZI',
+    blueLabel:'🔵 MAVİ',
+    redName:'KIRMIZI',
+    blueName:'MAVİ',
+    yellowName:'SARI',
+    purpleName:'MOR',
+    aiName:'YZ',
+    aiLabel:'🤖 YZ',
+    musicToggle:'Müzik Aç/Kapat',
+    sfxToggle:'Efekt Aç/Kapat',
+    selectOppCount:'🎯 Rakip Sayısı',
+    opp1:'1 Rakip',
+    opp2:'2 Rakip',
+    opp3:'3 Rakip',
+    aiThinkingSuffix:'düşünüyor...',
+    youWon:'Kazandın!',
+    redWon:'Kırmızı Kazandı!',
+    aiWon:'YZ Kazandı!',
+    blueWon:'Mavi Kazandı!',
+    wonSuffix:'kazandı!',
+    draw:'Berabere!',
+    pieceStrategy:' parça — harika strateji!',
+    pieceTryAgain:' parça. Tekrar dene!',
+    pieceBoth:'İkisi de ',
+    pieceBothEnd:' parça!',
+    youPlacedPrefix:'',
+    youPlacedSuffix:'. oldun. Tekrar dene!',
+    youPlacedSuffixEN:' place. Try again!',
+    multiDraw:'Hepsi {n} parça ile berabere!',
+    shareResult:'📤 Sonucu Paylaş',
+    playAgain:'🔄 Tekrar Oyna',
+    mainMenu:'🏠 Ana Menü',
+    copied:'✅ Kopyalandı!',
+    confirmHome:'Ana menüye dönülsün mü? Mevcut oyun kaybolacak.',
+    shareTitle:'Bölge Kapma',
+    shareRegions:'bölge',
+    shareGame:'Bölge Kapma'
+  },
+  en:{
+    appTitle:'Region Conquest',
+    badge:'⚔️ MOST FRAGMENTED PLAYER LOSES!',
+    selectCountry:'🗺️ Select Country',
+    selectMode:'⚔️ Select Mode',
+    countryTurkey:'Turkey',
+    countryTurkeyDesc:'81 provinces',
+    mode2p:'2 Players',
+    mode2pDesc:'Same screen',
+    modeEasy:'Rookie Governor',
+    modeEasyDesc:'Beginner',
+    modeNormal:'Strategist',
+    modeNormalDesc:'Intermediate',
+    modeHard:'Commander',
+    modeHardDesc:'Expert',
+    startGame:'🎮 Start Game',
+    yourTurn:'🔴 Your Turn',
+    opponentTurn:'🔵 Opponent Turn',
+    aiThinking:'🤖 AI thinking...',
+    pieces:'pieces',
+    left:'left',
+    redLabel:'🔴 RED',
+    blueLabel:'🔵 BLUE',
+    redName:'RED',
+    blueName:'BLUE',
+    yellowName:'YELLOW',
+    purpleName:'PURPLE',
+    aiName:'AI',
+    aiLabel:'🤖 AI',
+    musicToggle:'Toggle Music',
+    sfxToggle:'Toggle Sound Effects',
+    selectOppCount:'🎯 Opponent Count',
+    opp1:'1 Opponent',
+    opp2:'2 Opponents',
+    opp3:'3 Opponents',
+    aiThinkingSuffix:'thinking...',
+    youWon:'You Won!',
+    redWon:'Red Won!',
+    aiWon:'AI Won!',
+    blueWon:'Blue Won!',
+    wonSuffix:'won!',
+    draw:'Draw!',
+    pieceStrategy:' piece(s) — great strategy!',
+    pieceTryAgain:' piece(s). Try again!',
+    pieceBoth:'Both with ',
+    pieceBothEnd:' piece(s)!',
+    youPlacedPrefix:'You placed ',
+    youPlacedSuffix:'',
+    youPlacedSuffixEN:' place. Try again!',
+    multiDraw:'All tied with {n} piece(s)!',
+    shareResult:'📤 Share Result',
+    playAgain:'🔄 Play Again',
+    mainMenu:'🏠 Main Menu',
+    copied:'✅ Copied!',
+    confirmHome:'Return to main menu? Current game will be lost.',
+    shareTitle:'Region Conquest',
+    shareRegions:'regions',
+    shareGame:'Region Conquest'
+  }
+};
+let LANG=localStorage.getItem('lang')||'tr';
+function t(k){return (I18N[LANG]&&I18N[LANG][k])!==undefined?I18N[LANG][k]:I18N.en[k];}
+function applyLang(){
+  document.documentElement.lang=LANG;
+  document.title=t('appTitle');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=t(el.getAttribute('data-i18n'));});
+  document.querySelectorAll('[data-i18n-title]').forEach(el=>{el.title=t(el.getAttribute('data-i18n-title'));});
+  document.getElementById('lang-tr').classList.toggle('sel',LANG==='tr');
+  document.getElementById('lang-en').classList.toggle('sel',LANG==='en');
+  if(document.getElementById('screen-game').style.display!=='none'){ setTurn(); setLabels(); }
+  if(lastRanking&&document.getElementById('screen-result').style.display!=='none'){ buildResultRows(lastRanking); finishMessages(); }
+  if(rem>0||Object.values(sc).some(v=>v)) document.getElementById('rem-badge').textContent=rem+' '+t('left');
+}
+function setLabels(){
+  for(let p=1;p<=numPlayers;p++){
+    const el=document.getElementById('lbl'+p);
+    if(el) el.textContent=pName(p);
+  }
+}
+function setLang(l){
+  LANG=l;
+  localStorage.setItem('lang',l);
+  applyLang();
+}
+
+let MAP='turkey', MODE='normal';
 let cur=1, sc={1:0,2:0}, rem=0, busy=false;
 const OWN={1:new Set(),2:new Set()};
 let prevC={1:0,2:0};
 let curAdj=null, curCities=null;
+
+// Multi-player roster (1 human + up to 3 AI, or 2-human same-device mode)
+let numPlayers=2, aiPlayers=[2], aiCount=1, lastRanking=null;
+const PCOLORS={1:'#e74c3c',2:'#3b82f6',3:'#f5a623',4:'#9b59b6'};
+const PCOLORS_LIGHT={1:'#ff8a80',2:'#80d8ff',3:'#ffd699',4:'#d7a8e8'};
+const PNAME_KEY={1:'redName',2:'blueName',3:'yellowName',4:'purpleName'};
+const PEMOJI={1:'🔴',2:'🔵',3:'🟡',4:'🟣'};
+function isHuman(p){ return !aiPlayers.includes(p); }
+function isClaimed(g){ for(let p=1;p<=numPlayers;p++) if(g.classList.contains('p'+p)) return true; return false; }
+function isOwnedByAny(cid){ for(let p=1;p<=numPlayers;p++) if(OWN[p].has(cid)) return true; return false; }
+function pName(p){ return PEMOJI[p]+' '+t(PNAME_KEY[p])+(aiPlayers.includes(p)?(' '+t('aiName')):''); }
+function ordinal(n){ return LANG==='tr'?''+n:(['','1st','2nd','3rd','4th'][n]||n+'th'); }
+function computeRoster(){
+  if(MODE==='2p'){ numPlayers=2; aiPlayers=[]; }
+  else { numPlayers=1+aiCount; aiPlayers=[]; for(let p=2;p<=numPlayers;p++) aiPlayers.push(p); }
+}
 
 // Menu
 function selMap(m){
@@ -577,16 +789,90 @@ function selMode(m){
   MODE=m;
   ['card-2p','card-easy','card-normal','card-hard'].forEach(id=>document.getElementById(id).classList.remove('sel'));
   document.getElementById('card-'+m).classList.add('sel');
+  const showOpp=(m!=='2p');
+  document.getElementById('opp-count-lbl').style.display=showOpp?'':'none';
+  document.getElementById('opp-grid').style.display=showOpp?'':'none';
+}
+function selOpp(n){
+  aiCount=n;
+  ['card-opp1','card-opp2','card-opp3'].forEach(id=>document.getElementById(id).classList.remove('sel'));
+  document.getElementById('card-opp'+n).classList.add('sel');
 }
 
 // Audio
 const AC=new(window.AudioContext||window.webkitAudioContext)();
-function nt(f,t,d,v=0.2){try{const o=AC.createOscillator(),g=AC.createGain();o.connect(g);g.connect(AC.destination);o.type=t;o.frequency.value=f;g.gain.setValueAtTime(v,AC.currentTime);g.gain.exponentialRampToValueAtTime(0.001,AC.currentTime+d);o.start();o.stop(AC.currentTime+d);}catch(e){}}
+let musicOn=localStorage.getItem('music')!=='off';
+let sfxOn=localStorage.getItem('sfx')!=='off';
+function nt(f,ty,d,v=0.2){if(!sfxOn)return;try{const o=AC.createOscillator(),g=AC.createGain();o.connect(g);g.connect(AC.destination);o.type=ty;o.frequency.value=f;g.gain.setValueAtTime(v,AC.currentTime);g.gain.exponentialRampToValueAtTime(0.001,AC.currentTime+d);o.start();o.stop(AC.currentTime+d);}catch(e){}}
 function sfxClaim(p){const ff=p===1?[320,480]:[220,330];ff.forEach((f,i)=>setTimeout(()=>nt(f,'sine',0.1,0.15),i*50));}
 function sfxSplit(){[140,100].forEach((f,i)=>setTimeout(()=>nt(f,'sawtooth',0.15,0.1),i*70));}
 function sfxWin(){[523,659,784,1047].forEach((f,i)=>setTimeout(()=>nt(f,'sine',0.25,0.2),i*100));}
 function sfxLose(){[280,220,160].forEach((f,i)=>setTimeout(()=>nt(f,'triangle',0.25,0.18),i*100));}
 function resumeAC(){if(AC.state==='suspended')AC.resume();}
+
+// Ambient music — real licensed MP3 tracks (menu & gameplay), played via HTML5
+// <audio> elements with looping enabled. A short gain fade-out/fade-in is used
+// when switching between themes to avoid abrupt cuts.
+let currentTheme='menu';
+const MUSIC_VOL=0.35;
+const MUSIC_TRACKS={
+  menu: new Audio('audio/menu_music.mp3'),
+  game: new Audio('audio/game_music.mp3')
+};
+Object.values(MUSIC_TRACKS).forEach(a=>{a.loop=true;a.volume=0;});
+let activeTrack=null;
+
+function fadeTo(audio,target,dur){
+  if(audio._fadeTimer){clearInterval(audio._fadeTimer);audio._fadeTimer=null;}
+  const steps=20, stepMs=dur/steps;
+  const start=audio.volume, delta=(target-start)/steps;
+  let i=0;
+  audio._fadeTimer=setInterval(()=>{
+    i++;
+    audio.volume=Math.max(0,Math.min(MUSIC_VOL,start+delta*i));
+    if(i>=steps){
+      clearInterval(audio._fadeTimer);audio._fadeTimer=null;
+      audio.volume=target;
+      if(target===0) audio.pause();
+    }
+  },stepMs);
+}
+function startMusic(theme){
+  if(!musicOn) return;
+  if(theme) currentTheme=theme;
+  resumeAC();
+  const next=MUSIC_TRACKS[currentTheme];
+  if(activeTrack&&activeTrack!==next) fadeTo(activeTrack,0,500);
+  activeTrack=next;
+  next.play().catch(()=>{});
+  fadeTo(next,MUSIC_VOL,800);
+}
+function stopMusic(){
+  if(activeTrack) fadeTo(activeTrack,0,500);
+  activeTrack=null;
+}
+function setTheme(theme){
+  if(currentTheme===theme) return;
+  if(musicOn&&activeTrack) startMusic(theme);
+  else currentTheme=theme;
+}
+function toggleMusic(){
+  musicOn=!musicOn;
+  localStorage.setItem('music',musicOn?'on':'off');
+  document.getElementById('btn-music').classList.toggle('off',!musicOn);
+  if(musicOn) startMusic(currentTheme); else stopMusic();
+}
+function toggleSfx(){
+  sfxOn=!sfxOn;
+  localStorage.setItem('sfx',sfxOn?'on':'off');
+  document.getElementById('btn-sfx').classList.toggle('off',!sfxOn);
+}
+function initAudio(){
+  resumeAC();
+  if(musicOn) startMusic();
+  document.body.removeEventListener('pointerdown',initAudio);
+}
+document.body.addEventListener('pointerdown',initAudio,{once:true});
 
 // Screens
 function show(id){
@@ -653,19 +939,20 @@ function buildMap(svgEl,mapKey){
     const ctr=isFinite(x1)?[(x1+x2)/2,(y1+y2)/2]:[NaN,NaN];
     if(isNaN(ctr[0])||isNaN(ctr[1])) return;
     const g=document.createElementNS('http://www.w3.org/2000/svg','g');
-    g.className='il';g.id='il'+cid;
-    if(OWN[1].has(cid)) g.classList.add('p1');
-    else if(OWN[2].has(cid)) g.classList.add('p2');
+    g.setAttribute('class','il');g.id='il'+cid;
+    let owner=0;
+    for(let pp=1;pp<=numPlayers;pp++){ if(OWN[pp].has(cid)){ owner=pp; break; } }
+    if(owner) g.classList.add('p'+owner);
     const p=document.createElementNS('http://www.w3.org/2000/svg','path');
     p.setAttribute('d',pstr);
-    p.setAttribute('fill',OWN[1].has(cid)?'#e74c3c':OWN[2].has(cid)?'#3b82f6':'#5cb85c');
+    p.setAttribute('fill',owner?PCOLORS[owner]:'#5cb85c');
     g.appendChild(p);
     const t=document.createElementNS('http://www.w3.org/2000/svg','text');
     t.setAttribute('x',ctr[0]);t.setAttribute('y',ctr[1]);
     t.setAttribute('text-anchor','middle');t.setAttribute('dominant-baseline','central');
     t.setAttribute('font-size',cfg.fs);t.setAttribute('font-family','Nunito,sans-serif');
     t.setAttribute('font-weight','700');t.setAttribute('pointer-events','none');
-    t.setAttribute('fill',(OWN[1].has(cid)||OWN[2].has(cid))?'rgba(255,255,255,0.9)':'rgba(0,0,0,0.55)');
+    t.setAttribute('fill',owner?'rgba(255,255,255,0.9)':'rgba(0,0,0,0.55)');
     const co=idToCity[cid];
     t.textContent=co?co.name:fname;
     g.appendChild(t);
@@ -692,24 +979,41 @@ function buildMap(svgEl,mapKey){
 
 function tap(id){
   if(busy) return;
-  if(MODE!=='2p'&&cur===2) return;
+  if(!isHuman(cur)) return;
   const g=document.getElementById('il'+id);
-  if(!g||g.classList.contains('p1')||g.classList.contains('p2')) return;
+  if(!g||isClaimed(g)) return;
   claim(id,cur);
-  if(rem>0&&MODE!=='2p'){
+  if(rem>0&&!isHuman(cur)){
     busy=true;
     document.getElementById('ai-bar').style.display='block';
     const d=MODE==='easy'?500:MODE==='normal'?800:1100;
-    setTimeout(()=>{aiMove();busy=false;document.getElementById('ai-bar').style.display='none';},d+Math.random()*300);
+    setTimeout(stepAI,d+Math.random()*300);
+  }
+}
+
+// Drives consecutive AI turns (needed when 2-3 AI opponents move back-to-back before the human's turn)
+function stepAI(){
+  if(rem===0||isHuman(cur)){
+    busy=false;
+    document.getElementById('ai-bar').style.display='none';
+    return;
+  }
+  aiMove();
+  if(rem>0&&!isHuman(cur)){
+    const d=MODE==='easy'?500:MODE==='normal'?800:1100;
+    setTimeout(stepAI,d+Math.random()*300);
+  } else {
+    busy=false;
+    document.getElementById('ai-bar').style.display='none';
   }
 }
 
 function claim(id,p){
   const nid=+id;
   const g=document.getElementById('il'+nid);
-  if(!g||g.classList.contains('p1')||g.classList.contains('p2')) return;
+  if(!g||isClaimed(g)) return;
   g.classList.add('p'+p);
-  g.querySelector('path').setAttribute('fill',p===1?'#e74c3c':'#3b82f6');
+  g.querySelector('path').setAttribute('fill',PCOLORS[p]);
   g.querySelector('text').setAttribute('fill','rgba(255,255,255,0.9)');
   OWN[p].add(nid); sc[p]++; rem--;
   sfxClaim(p);
@@ -718,89 +1022,173 @@ function claim(id,p){
   path.style.filter='brightness(1.6)';
   setTimeout(()=>{path.style.filter='';},250);
   const nc=countComp(p);
-  if(nc>prevC[p]&&prevC[p]>0){sfxSplit();burst(p===1?'#e74c3c':'#3b82f6',p===1?'#ff8a80':'#80d8ff');}
+  if(nc>prevC[p]&&prevC[p]>0){sfxSplit();burst(PCOLORS[p],PCOLORS_LIGHT[p]);}
   prevC[p]=nc;
   updateUI();
-  if(MODE==='2p'){cur=cur===1?2:1;setTurn();}
+  cur=(cur%numPlayers)+1;
+  setTurn();
   if(rem===0) setTimeout(finish,600);
 }
 
 function aiMove(){
   if(rem===0) return;
+  const me=cur;
   const avail=curCities.filter(c=>{
     const g=document.getElementById('il'+c.id);
-    return g&&!g.classList.contains('p1')&&!g.classList.contains('p2');
+    return g&&!isClaimed(g);
   });
   if(!avail.length) return;
+  const others=[];
+  for(let p=1;p<=numPlayers;p++) if(p!==me) others.push(p);
   if(MODE==='easy'){
-    claim(avail[Math.floor(Math.random()*avail.length)].id,2);
+    // Beginner AI: mostly random, but leans toward growing its own territory sometimes
+    const touching=avail.filter(c=>(curAdj[c.id]||[]).some(n=>OWN[me].has(+n)));
+    const pool=(touching.length&&Math.random()<0.4)?touching:avail;
+    claim(pool[Math.floor(Math.random()*pool.length)].id,me);
     return;
   }
-  let best=null,bs=-99;
+  const meCount=prevC[me];
+  let best=null,bs=-Infinity;
   avail.forEach(c=>{
+    const id=+c.id;
+    const nb=curAdj[id]||[];
+    const ownAdj=nb.filter(n=>OWN[me].has(+n)).length;
+    const oppAdj=nb.filter(n=>others.some(o=>OWN[o].has(+n))).length;
+    const freeAdj=nb.filter(n=>!isOwnedByAny(+n)).length;
     let s=0;
-    const nb=curAdj[c.id]||[];
-    s+=nb.filter(n=>OWN[2].has(+n)).length*3;
-    s+=nb.filter(n=>OWN[1].has(+n)).length*2;
-    if(nb.some(n=>OWN[2].has(+n))){
-      OWN[2].add(+c.id);
-      const a=countComp(2);
-      OWN[2].delete(+c.id);
-      if(a<=prevC[2]) s+=MODE==='hard'?15:8;
-    }
-    s+=MODE==='hard'?Math.random()*0.3:Math.random()*1.5;
+    // Does claiming this cell merge two of my own groups into one (less fragmentation = win)?
+    OWN[me].add(id);
+    const meAfter=countComp(me);
+    OWN[me].delete(id);
+    if(meAfter<meCount) s+=30;
+    else if(ownAdj>0) s+=10+ownAdj*4;
+    else s-=8;
+    // Would this cell let an opponent merge two of their groups? Take it first to deny that.
+    // Bonus is split across all active opponents so total blocking pressure stays comparable
+    // to the original single-opponent tuning regardless of how many AIs are in the game.
+    others.forEach(o=>{
+      OWN[o].add(id);
+      const after=countComp(o);
+      OWN[o].delete(id);
+      if(after<prevC[o]) s+=22/others.length;
+    });
+    // Keep options open / apply pressure on opponents' territory
+    s+=freeAdj*0.6;
+    s+=oppAdj*0.8;
+    // Hard plays sharper (less noise), Normal still explores a bit
+    s+=MODE==='hard'?Math.random()*0.4:Math.random()*2.2;
     if(s>bs){bs=s;best=c;}
   });
-  if(best) claim(best.id,2);
+  if(best) claim(best.id,me);
+}
+
+function buildScoreCards(){
+  const wrap=document.getElementById('scores');
+  wrap.innerHTML='';
+  for(let p=1;p<=numPlayers;p++){
+    wrap.insertAdjacentHTML('beforeend',
+      `<div id="sc${p}" class="sc${p===1?' active':''}">
+         <div class="lbl" id="lbl${p}"></div>
+         <div class="num" id="n${p}">0</div>
+         <div class="prow"><div class="pnum" id="pc${p}">0</div><div class="plbl" data-i18n="pieces">${t('pieces')}</div></div>
+       </div>`);
+  }
+}
+
+function buildResultRows(ranking){
+  const wrap=document.getElementById('result-scores');
+  wrap.innerHTML='';
+  ranking.forEach(({p,frag})=>{
+    wrap.insertAdjacentHTML('beforeend',
+      `<div class="rs" id="rs${p}"><div class="rl" id="rs${p}l">${pName(p)}</div><div class="rn" id="rs${p}n">${frag}</div><div class="rp" data-i18n="pieces">${t('pieces')}</div></div>`);
+  });
 }
 
 function updateUI(){
-  const c1=countComp(1),c2=countComp(2);
-  document.getElementById('n1').textContent=sc[1];
-  document.getElementById('n2').textContent=sc[2];
-  document.getElementById('pc1').textContent=c1;
-  document.getElementById('pc2').textContent=c2;
-  document.getElementById('rem-badge').textContent=rem+' left';
+  for(let p=1;p<=numPlayers;p++){
+    const nEl=document.getElementById('n'+p), pcEl=document.getElementById('pc'+p);
+    if(nEl) nEl.textContent=sc[p];
+    if(pcEl) pcEl.textContent=countComp(p);
+  }
+  document.getElementById('rem-badge').textContent=rem+' '+t('left');
 }
 
 function setTurn(){
-  document.getElementById('sc1').classList.toggle('active',cur===1);
-  document.getElementById('sc2').classList.toggle('active',cur===2);
+  for(let p=1;p<=numPlayers;p++){
+    const el=document.getElementById('sc'+p);
+    if(el) el.classList.toggle('active',cur===p);
+  }
   const tb=document.getElementById('turn-badge');
-  if(MODE!=='2p'&&cur===2) tb.textContent='🤖 AI thinking...';
-  else if(cur===1) tb.textContent='🔴 Your Turn';
-  else tb.textContent='🔵 Opponent Turn';
-}
-
-function finish(){
-  const c1=countComp(1),c2=countComp(2);
-  buildMap(document.getElementById('result-svg'),MAP);
-  show('screen-result');
-  document.getElementById('rs1n').textContent=c1;
-  document.getElementById('rs2n').textContent=c2;
-  document.getElementById('rs2l').textContent=MODE!=='2p'?'🤖 AI':'🔵 BLUE';
-  if(c1<c2){
-    document.getElementById('result-icon').textContent='🏆';
-    document.getElementById('result-title').innerHTML='<span style="color:#e74c3c">'+(MODE!=='2p'?'You Won!':'Red Won!')+'</span>';
-    document.getElementById('result-sub').textContent=c1+' piece(s) — great strategy!';
-    sfxWin();bigBurst('#e74c3c','#ff8a80');
-  }else if(c2<c1){
-    document.getElementById('result-icon').textContent=MODE!=='2p'?'🤖':'🏆';
-    document.getElementById('result-title').innerHTML='<span style="color:#3b82f6">'+(MODE!=='2p'?'AI Won!':'Blue Won!')+'</span>';
-    document.getElementById('result-sub').textContent=c2+' piece(s). Try again!';
-    sfxLose();bigBurst('#3b82f6','#80d8ff');
-  }else{
-    document.getElementById('result-icon').textContent='🤝';
-    document.getElementById('result-title').innerHTML='<span style="color:#f39c12">Draw!</span>';
-    document.getElementById('result-sub').textContent='Both with '+c1+' piece(s)!';
-    sfxWin();
+  if(!isHuman(cur)){
+    tb.textContent = numPlayers>2
+      ? PEMOJI[cur]+' '+t(PNAME_KEY[cur])+' '+t('aiThinkingSuffix')
+      : t('aiThinking');
+  } else if(cur===1){
+    tb.textContent=t('yourTurn');
+  } else {
+    tb.textContent=t('opponentTurn');
   }
 }
 
+function finishMessages(){
+  if(!lastRanking) return;
+  const results=lastRanking;
+  const winners=results.filter(r=>r.frag===results[0].frag);
+  const isDraw=winners.length>1;
+  const winnerP=results[0].p;
+  const userWon=winnerP===1&&!isDraw;
+  const userRank=results.findIndex(r=>r.p===1)+1;
+  const icon=document.getElementById('result-icon');
+  const title=document.getElementById('result-title');
+  const sub=document.getElementById('result-sub');
+  if(isDraw){
+    icon.textContent='🤝';
+    title.innerHTML='<span style="color:#f39c12">'+t('draw')+'</span>';
+    sub.textContent = numPlayers===2
+      ? t('pieceBoth')+results[0].frag+t('pieceBothEnd')
+      : t('multiDraw').replace('{n}',results[0].frag);
+  } else if(userWon){
+    icon.textContent='🏆';
+    title.innerHTML='<span style="color:#e74c3c">'+(MODE!=='2p'?t('youWon'):t('redWon'))+'</span>';
+    sub.textContent=results[0].frag+t('pieceStrategy');
+  } else if(numPlayers===2){
+    icon.textContent=MODE!=='2p'?'🤖':'🏆';
+    title.innerHTML='<span style="color:#3b82f6">'+(MODE!=='2p'?t('aiWon'):t('blueWon'))+'</span>';
+    sub.textContent=results.find(r=>r.p===2).frag+t('pieceTryAgain');
+  } else {
+    icon.textContent=aiPlayers.includes(winnerP)?'🤖':'🏆';
+    title.innerHTML='<span style="color:'+PCOLORS[winnerP]+'">'+pName(winnerP)+' '+t('wonSuffix')+'</span>';
+    sub.textContent = LANG==='tr'
+      ? t('youPlacedPrefix')+ordinal(userRank)+t('youPlacedSuffix')
+      : t('youPlacedPrefix')+ordinal(userRank)+t('youPlacedSuffixEN');
+  }
+}
+
+function finish(){
+  const results=[];
+  for(let p=1;p<=numPlayers;p++) results.push({p,frag:countComp(p)});
+  results.sort((a,b)=>a.frag-b.frag);
+  lastRanking=results;
+  buildMap(document.getElementById('result-svg'),MAP);
+  show('screen-result');
+  buildResultRows(results);
+  finishMessages();
+  const winners=results.filter(r=>r.frag===results[0].frag);
+  const isDraw=winners.length>1;
+  const winnerP=results[0].p;
+  const userWon=winnerP===1&&!isDraw;
+  if(isDraw){ sfxWin(); }
+  else if(userWon){ sfxWin();bigBurst(PCOLORS[1],PCOLORS_LIGHT[1]); }
+  else{ sfxLose();bigBurst(PCOLORS[winnerP],PCOLORS_LIGHT[winnerP]); }
+}
+
 function reset(){
-  cur=1;sc={1:0,2:0};rem=0;busy=false;
-  OWN[1]=new Set();OWN[2]=new Set();
-  prevC={1:0,2:0};pts=[];
+  cur=1;sc={};prevC={};rem=0;busy=false;
+  for(let p=1;p<=4;p++){
+    if(p<=numPlayers){ OWN[p]=new Set(); sc[p]=0; prevC[p]=0; }
+    else { delete OWN[p]; }
+  }
+  pts=[];
   ctx.clearRect(0,0,cnv.width,cnv.height);
 }
 
@@ -809,44 +1197,51 @@ function rematch(){
   curCities=GDATA[MAP].cities;
   curAdj=GDATA[MAP].adj;
   rem=curCities.length;
-  document.getElementById('lbl2').textContent=MODE!=='2p'?'🤖 AI':'🔵 BLUE';
+  buildScoreCards();
+  setLabels();
   buildMap(document.getElementById('svg'),MAP);
   updateUI();setTurn();
+  setTheme('game');
   show('screen-game');
 }
 
-function goMenu(){reset();show('screen-menu');}
+function goMenu(){reset();setTheme('menu');show('screen-menu');}
 function confirmHome(){
-  if(confirm('Return to main menu? Current game will be lost.')) goMenu();
+  if(confirm(t('confirmHome'))) goMenu();
 }
 
 function shareResult(){
-  const c1=+document.getElementById('rs1n').textContent;
-  const c2=+document.getElementById('rs2n').textContent;
+  if(!lastRanking) return;
   const title=document.getElementById('result-title').textContent;
-  const opponent=MODE==='2p'?'BLUE':'AI';
-  const mapName=MAP==='turkey'?'Turkey':MAP==='usa'?'USA':'France';
-  const text=`🗺️ Region Conquest - ${mapName}\n${title}\n\n🔴 RED: ${sc[1]} regions (${c1} pieces)\n${MODE!=='2p'?'🤖':'🔵'} ${opponent}: ${sc[2]} regions (${c2} pieces)\n\n🎮 https://aratorn81.github.io/region-conquest`;
+  const mapName=t('countryTurkey');
+  let lines='';
+  lastRanking.forEach(({p,frag})=>{
+    lines+=`\n${pName(p)}: ${sc[p]} ${t('shareRegions')} (${frag} ${t('pieces')})`;
+  });
+  const text=`🗺️ ${t('shareTitle')} - ${mapName}\n${title}\n${lines}\n\n🎮 https://aratorn81.github.io/region-conquest`;
   if(navigator.share){
-    navigator.share({title:'Region Conquest',text});
+    navigator.share({title:t('shareGame'),text});
   } else {
     navigator.clipboard.writeText(text).then(()=>{
       const btn=document.getElementById('btn-share');
       const orig=btn.textContent;
-      btn.textContent='✅ Copied!';
+      btn.textContent=t('copied');
       setTimeout(()=>{btn.textContent=orig;},2000);
     });
   }
 }
 
 function startGame(){
+  computeRoster();
   reset();
   curCities=GDATA[MAP].cities;
   curAdj=GDATA[MAP].adj;
   rem=curCities.length;
-  document.getElementById('lbl2').textContent=MODE!=='2p'?'🤖 AI':'🔵 BLUE';
+  buildScoreCards();
+  setLabels();
   buildMap(document.getElementById('svg'),MAP);
   updateUI();setTurn();
+  setTheme('game');
   show('screen-game');
 }
 
@@ -887,7 +1282,10 @@ function tick(){
 }
 
 // Init
+document.getElementById('btn-music').classList.toggle('off',!musicOn);
+document.getElementById('btn-sfx').classList.toggle('off',!sfxOn);
 show('screen-menu');
+applyLang();
 loadGeoData();
 </script>
 </body>

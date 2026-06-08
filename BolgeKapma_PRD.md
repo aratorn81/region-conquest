@@ -98,9 +98,11 @@ Splash Screen
 | Kart | İkon | İsim | Açıklama | Zorluk |
 |------|------|------|----------|--------|
 | 2 Oyuncu | 👥 | 2 Oyuncu | Aynı ekranda sırayla | — |
-| Kolay AI | 🟢 | Kolay AI | Rastgele oynar | ⭐ |
-| Normal AI | 🟡 | Normal AI | Akıllıca oynar | ⭐⭐ |
-| Zor AI | 🔴 | Zor AI | Çok zekice oynar | ⭐⭐⭐ |
+| Kolay AI | 🟢 | Çaylak Vali (EN: Rookie Governor) | Rastgele oynar (Başlangıç / Beginner) | ⭐ |
+| Normal AI | 🟡 | Stratejist (EN: Strategist) | Akıllıca oynar (Orta / Intermediate) | ⭐⭐ |
+| Zor AI | 🔴 | Komutan (EN: Commander) | Çok zekice oynar (Uzman / Expert) | ⭐⭐⭐ |
+
+> Not (2026-06-08, Yönetici onayı): Kart kimliği ("Kolay AI"/"Normal AI"/"Zor AI") zorluk seviyesini ifade eder; oyunda kullanıcıya gösterilen marka/tema ismi ve açıklaması temalı isimlerdir (yukarıdaki "İsim"/"Açıklama" sütunları). PRD bu maddede oyunun gerçek (temalı) metinleriyle güncellenmiştir — oyun kodu değiştirilmedi.
 
 **Oyuna Başla Butonu:**
 - Turuncu gradient, büyük, tam genişlik

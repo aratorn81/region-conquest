@@ -1,0 +1,17 @@
+{
+  "name": "region-conquest",
+  "version": "1.0.0",
+  "description": "Region Conquest - territory capture game",
+  "private": true,
+  "scripts": {
+    "android": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.4.0",
+    "@capacitor/cli": "^8.4.0",
+    "@capacitor/core": "^8.4.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}
