@@ -137,6 +137,13 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:999;width:100%;he
   .sc .prow{margin-top:3px;padding-top:3px}
   #ai-bar{padding:2px 0}
 }
+
+/* Quiz Toggle Row */
+#quiz-toggle-row{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:14px;margin:8px 0;cursor:pointer;transition:all 0.2s;width:100%;max-width:360px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);opacity:0.55}
+#quiz-toggle-row.quiz-on{background:rgba(243,156,18,0.10);border:1px solid rgba(243,156,18,0.30);opacity:1}
+#quiz-toggle-row:active{transform:scale(0.97)}
+#btn-quiz-toggle{margin-left:auto;padding:4px 12px;border-radius:20px;border:none;font-size:12px;font-weight:800;cursor:pointer;font-family:'Nunito',system-ui,sans-serif;background:rgba(255,255,255,0.12);color:#fff}
+#quiz-sheet button:active{transform:scale(0.96)}
 </style>
 </head>
 <body>
@@ -196,6 +203,11 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:999;width:100%;he
       <div class="md" data-i18n="mode2pDesc">Aynı ekran</div>
     </div>
   </div>
+  <div id="quiz-toggle-row">
+    <span>🎓 <span data-i18n="quizModeLabel"></span></span>
+    <span data-i18n="quizModeDesc" style="opacity:0.65;font-size:12px"></span>
+    <button id="btn-quiz-toggle"></button>
+  </div>
   <div class="sec-lbl" id="opp-count-lbl" data-i18n="selectOppCount">🎯 Rakip Sayısı</div>
   <div id="opp-grid">
     <div class="opp-card sel" id="card-opp1" onclick="selOpp(1)">
@@ -223,6 +235,18 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:999;width:100%;he
   <div id="scores"></div>
   <div id="ai-bar"><div class="ai-pill"><div class="dot"></div><div class="dot"></div><div class="dot"></div> <span data-i18n="aiThinking">AI thinking...</span></div></div>
   <div id="mapwrap"><svg id="svg" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet"></svg></div>
+  <div id="quiz-sheet" style="display:none; position:fixed; bottom:0; left:0; right:0; height:42vh; background:rgba(15,12,41,0.96); backdrop-filter:blur(8px); border-radius:20px 20px 0 0; padding:12px 16px 20px; z-index:100; transform:translateY(100%); transition:transform 0.3s ease-out; flex-direction:column; gap:10px;">
+    <div style="width:36px;height:4px;background:rgba(255,255,255,0.2);border-radius:2px;margin:0 auto 4px;"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span id="quiz-il-name" style="font-size:11px;letter-spacing:0.8px;color:rgba(255,255,255,0.55);font-weight:800;"></span>
+      <div id="quiz-timer-bar" style="width:120px;height:3px;background:rgba(255,255,255,0.15);border-radius:2px;overflow:hidden;">
+        <div id="quiz-timer-fill" style="height:100%;width:100%;background:#f39c12;transition:width 0.1s linear;border-radius:2px;"></div>
+      </div>
+    </div>
+    <div id="quiz-question" style="font-size:15px;font-weight:800;color:#fff;line-height:1.5;"></div>
+    <div id="quiz-options" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;flex:1;"></div>
+    <div id="quiz-feedback" style="font-size:12px;font-weight:800;text-align:center;visibility:hidden;min-height:18px;"></div>
+  </div>
 </div>
 
 <div id="screen-result">
@@ -633,9 +657,7 @@ const I18N={
     opponentTurn:'🔵 Rakip Sırası',
     aiThinking:'🤖 YZ düşünüyor...',
     pieces:'parça',
-    left:'kaldı',
-    redLabel:'🔴 KIRMIZI',
-    blueLabel:'🔵 MAVİ',
+    left:'il kaldı',
     redName:'KIRMIZI',
     blueName:'MAVİ',
     yellowName:'SARI',
@@ -661,7 +683,6 @@ const I18N={
     pieceBothEnd:' parça!',
     youPlacedPrefix:'',
     youPlacedSuffix:'. oldun. Tekrar dene!',
-    youPlacedSuffixEN:' place. Try again!',
     multiDraw:'Hepsi {n} parça ile berabere!',
     shareResult:'📤 Sonucu Paylaş',
     playAgain:'🔄 Tekrar Oyna',
@@ -670,7 +691,16 @@ const I18N={
     confirmHome:'Ana menüye dönülsün mü? Mevcut oyun kaybolacak.',
     shareTitle:'Bölge Kapma',
     shareRegions:'bölge',
-    shareGame:'Bölge Kapma'
+    shareGame:'Bölge Kapma',
+    quizModeLabel:'Sınav Modu',
+    quizModeDesc:'İlleri bilirsen kap!',
+    quizModeToggleOn:'Açık',
+    quizModeToggleOff:'Kapalı',
+    quizTitle:'HAKKINDA',
+    quizCorrect:'Doğru! [il] senin oldu.',
+    quizWrong:'Yanlış — sıra rakibe geçti.',
+    quizWrongHint:'(Doğru: [cevap])',
+    quizTimeUp:'Süre doldu — sıra rakibe geçti.'
   },
   en:{
     appTitle:'Region Conquest',
@@ -692,9 +722,7 @@ const I18N={
     opponentTurn:'🔵 Opponent Turn',
     aiThinking:'🤖 AI thinking...',
     pieces:'pieces',
-    left:'left',
-    redLabel:'🔴 RED',
-    blueLabel:'🔵 BLUE',
+    left:'regions left',
     redName:'RED',
     blueName:'BLUE',
     yellowName:'YELLOW',
@@ -720,7 +748,7 @@ const I18N={
     pieceBothEnd:' piece(s)!',
     youPlacedPrefix:'You placed ',
     youPlacedSuffix:'',
-    youPlacedSuffixEN:' place. Try again!',
+    youPlacedSuffixEN:'. Try again!',
     multiDraw:'All tied with {n} piece(s)!',
     shareResult:'📤 Share Result',
     playAgain:'🔄 Play Again',
@@ -729,7 +757,16 @@ const I18N={
     confirmHome:'Return to main menu? Current game will be lost.',
     shareTitle:'Region Conquest',
     shareRegions:'regions',
-    shareGame:'Region Conquest'
+    shareGame:'Region Conquest',
+    quizModeLabel:'Quiz Mode',
+    quizModeDesc:'Claim provinces you know!',
+    quizModeToggleOn:'On',
+    quizModeToggleOff:'Off',
+    quizTitle:'ABOUT',
+    quizCorrect:'Correct! [province] is yours.',
+    quizWrong:'Wrong — turn passes to opponent.',
+    quizWrongHint:'(Correct: [answer])',
+    quizTimeUp:"Time's up — turn passes to opponent."
   }
 };
 let LANG=localStorage.getItem('lang')||'tr';
@@ -744,6 +781,7 @@ function applyLang(){
   if(document.getElementById('screen-game').style.display!=='none'){ setTurn(); setLabels(); }
   if(lastRanking&&document.getElementById('screen-result').style.display!=='none'){ buildResultRows(lastRanking); finishMessages(); }
   if(rem>0||Object.values(sc).some(v=>v)) document.getElementById('rem-badge').textContent=rem+' '+t('left');
+  updateQuizToggleUI();
 }
 function setLabels(){
   for(let p=1;p<=numPlayers;p++){
@@ -874,6 +912,144 @@ function initAudio(){
 }
 document.body.addEventListener('pointerdown',initAudio,{once:true});
 
+// Quiz Mode
+window.QUIZ_DATA = null;
+fetch('assets/quiz/turkey_quiz.json').then(r=>r.json()).then(d=>{window.QUIZ_DATA=d;}).catch(()=>{});
+
+let quizModeOn = localStorage.getItem('quizMode') === 'on';
+let quizTimer = null, quizPendingCity = null;
+const QUIZ_TIME = 15000;
+
+function updateQuizToggleUI() {
+  const row = document.getElementById('quiz-toggle-row');
+  const btn = document.getElementById('btn-quiz-toggle');
+  if (!row || !btn) return;
+  row.classList.toggle('quiz-on', quizModeOn);
+  row.style.opacity = quizModeOn ? '1' : '0.55';
+  btn.style.background = quizModeOn ? '#f39c12' : 'rgba(255,255,255,0.12)';
+  btn.style.color = quizModeOn ? '#000' : '#fff';
+  btn.setAttribute('data-i18n', quizModeOn ? 'quizModeToggleOn' : 'quizModeToggleOff');
+  btn.textContent = t(quizModeOn ? 'quizModeToggleOn' : 'quizModeToggleOff');
+}
+
+function toggleQuizMode() {
+  quizModeOn = !quizModeOn;
+  localStorage.setItem('quizMode', quizModeOn ? 'on' : 'off');
+  updateQuizToggleUI();
+}
+
+function openQuizSheet(cityKey, cityName, questionData) {
+  quizPendingCity = cityKey;
+  const sheet = document.getElementById('quiz-sheet');
+  const ilEl = document.getElementById('quiz-il-name');
+  const qEl = document.getElementById('quiz-question');
+  const optEl = document.getElementById('quiz-options');
+  const fbEl = document.getElementById('quiz-feedback');
+  const fillEl = document.getElementById('quiz-timer-fill');
+
+  ilEl.textContent = cityName.toUpperCase() + ' ' + t('quizTitle');
+  qEl.textContent = LANG === 'tr' ? questionData.q_tr : questionData.q_en;
+  fbEl.style.visibility = 'hidden';
+  fbEl.textContent = '';
+
+  const opts = LANG === 'tr' ? questionData.options_tr : questionData.options_en;
+  const labels = ['A)', 'B)', 'C)', 'D)'];
+  optEl.innerHTML = '';
+  opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.textContent = labels[i] + ' ' + opt;
+    btn.style.cssText = 'min-height:52px;border-radius:14px;border:1.5px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.07);color:#fff;font-size:14px;font-weight:800;cursor:pointer;transition:all 0.15s;font-family:\'Nunito\',system-ui,sans-serif;';
+    btn.addEventListener('click', () => handleQuizAnswer(opt, questionData, opts));
+    optEl.appendChild(btn);
+  });
+
+  sheet.style.display = 'flex';
+  requestAnimationFrame(() => { sheet.style.transform = 'translateY(0)'; });
+
+  let elapsed = 0;
+  fillEl.style.width = '100%';
+  fillEl.style.background = '#f39c12';
+  if (quizTimer) clearInterval(quizTimer);
+  quizTimer = setInterval(() => {
+    elapsed += 100;
+    const pct = Math.max(0, 100 - (elapsed / QUIZ_TIME) * 100);
+    fillEl.style.width = pct + '%';
+    if (elapsed >= QUIZ_TIME - 5000) fillEl.style.background = '#e74c3c';
+    if (elapsed >= QUIZ_TIME) { clearInterval(quizTimer); quizTimer = null; handleQuizTimeout(); }
+  }, 100);
+}
+
+function closeQuizSheet() {
+  const sheet = document.getElementById('quiz-sheet');
+  sheet.style.transform = 'translateY(100%)';
+  setTimeout(() => { sheet.style.display = 'none'; }, 320);
+  quizPendingCity = null;
+}
+
+function handleQuizAnswer(chosen, questionData, allOpts) {
+  clearInterval(quizTimer); quizTimer = null;
+  const correct = LANG === 'tr' ? (questionData.correct_tr || questionData.correct) : (questionData.correct_en || questionData.correct);
+  const isCorrect = chosen === correct;
+  const btns = document.querySelectorAll('#quiz-options button');
+  const fbEl = document.getElementById('quiz-feedback');
+
+  btns.forEach((btn, i) => {
+    btn.style.pointerEvents = 'none';
+    const opt = allOpts[i];
+    if (opt === correct) {
+      btn.style.background = 'rgba(39,174,96,0.45)';
+      btn.style.borderColor = isCorrect ? '#27ae60' : 'rgba(39,174,96,0.6)';
+    } else if (opt === chosen && !isCorrect) {
+      btn.style.background = 'rgba(231,76,60,0.45)';
+      btn.style.borderColor = '#e74c3c';
+    } else {
+      btn.style.opacity = '0.35';
+    }
+  });
+
+  fbEl.style.visibility = 'visible';
+  if (isCorrect) {
+    const cityName = document.getElementById('quiz-il-name').textContent.replace(' ' + t('quizTitle'), '').trim();
+    fbEl.style.color = '#27ae60';
+    fbEl.textContent = t('quizCorrect').replace('[il]', cityName).replace('[province]', cityName);
+    const pendingId = quizPendingCity;
+    setTimeout(() => { closeQuizSheet(); claim(pendingId, cur); }, 400);
+  } else {
+    fbEl.style.color = '#e74c3c';
+    fbEl.textContent = t('quizWrong') + ' ' + t('quizWrongHint').replace('[cevap]', correct).replace('[answer]', correct);
+    sfxSplit();
+    setTimeout(() => { closeQuizSheet(); cur=(cur%numPlayers)+1; setTurn(); }, 1200);
+  }
+}
+
+function handleQuizTimeout() {
+  const fbEl = document.getElementById('quiz-feedback');
+  const btns = document.querySelectorAll('#quiz-options button');
+  btns.forEach(b => { b.style.pointerEvents = 'none'; b.style.opacity = '0.35'; });
+  fbEl.style.visibility = 'visible';
+  fbEl.style.color = '#e74c3c';
+  fbEl.textContent = t('quizTimeUp');
+  sfxSplit();
+  setTimeout(() => { closeQuizSheet(); cur=(cur%numPlayers)+1; setTurn(); }, 1200);
+}
+
+function getQuizQuestion(cityKey) {
+  if (!window.QUIZ_DATA || !QUIZ_DATA[cityKey] || !QUIZ_DATA[cityKey].questions) return null;
+  const qs = QUIZ_DATA[cityKey].questions;
+  if (!window._usedQ) window._usedQ = {};
+  if (!_usedQ[cityKey]) _usedQ[cityKey] = [];
+  const available = qs.map((_, i) => i).filter(i => !_usedQ[cityKey].includes(i));
+  const pool = available.length > 0 ? available : ((_usedQ[cityKey] = []), qs.map((_, i) => i));
+  const idx = pool[Math.floor(Math.random() * pool.length)];
+  _usedQ[cityKey].push(idx);
+  return qs[idx];
+}
+
+function isHumanTurn() {
+  if (MODE === '2p') return true;
+  return !aiPlayers.includes(cur);
+}
+
 // Screens
 function show(id){
   document.getElementById('screen-menu').style.display='none';
@@ -982,6 +1158,12 @@ function tap(id){
   if(!isHuman(cur)) return;
   const g=document.getElementById('il'+id);
   if(!g||isClaimed(g)) return;
+  if(quizModeOn && isHumanTurn()) {
+    const cityObj = curCities.find(c => +c.id === +id);
+    const cityName = cityObj ? cityObj.name : String(id);
+    const q = getQuizQuestion(String(id));
+    if (q) { openQuizSheet(String(id), cityName, q); return; }
+  }
   claim(id,cur);
   if(rem>0&&!isHuman(cur)){
     busy=true;
@@ -1287,6 +1469,8 @@ document.getElementById('btn-sfx').classList.toggle('off',!sfxOn);
 show('screen-menu');
 applyLang();
 loadGeoData();
+document.getElementById('quiz-toggle-row').addEventListener('click', toggleQuizMode);
+updateQuizToggleUI();
 </script>
 </body>
 </html>
