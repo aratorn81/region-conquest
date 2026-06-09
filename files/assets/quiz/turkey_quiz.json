@@ -1,0 +1,883 @@
+{
+  "6": {
+    "name": "Ankara",
+    "questions": [
+      {
+        "q_tr": "Ankara'nın plaka kodu kaçtır?",
+        "q_en": "What is Ankara's license plate code?",
+        "correct": "06",
+        "options_tr": ["06", "34", "16", "35"],
+        "options_en": ["06", "34", "16", "35"]
+      },
+      {
+        "q_tr": "Ankara hangi coğrafi bölgede yer alır?",
+        "q_en": "In which geographical region is Ankara located?",
+        "correct": "İç Anadolu",
+        "correct_en": "Central Anatolia",
+        "options_tr": ["İç Anadolu", "Ege", "Karadeniz", "Marmara"],
+        "options_en": ["Central Anatolia", "Aegean", "Black Sea", "Marmara"]
+      },
+      {
+        "q_tr": "Aşağıdakilerden hangisi Ankara'nın komşu ili değildir?",
+        "q_en": "Which of the following is NOT a neighbor of Ankara?",
+        "correct": "Bursa",
+        "options_tr": ["Bursa", "Konya", "Eskişehir", "Kırıkkale"],
+        "options_en": ["Bursa", "Konya", "Eskişehir", "Kırıkkale"]
+      }
+    ]
+  },
+  "34": {
+    "name": "İstanbul",
+    "questions": [
+      {
+        "q_tr": "İstanbul'un plaka kodu kaçtır?",
+        "q_en": "What is Istanbul's license plate code?",
+        "correct": "34",
+        "options_tr": ["34", "06", "35", "01"],
+        "options_en": ["34", "06", "35", "01"]
+      },
+      {
+        "q_tr": "İstanbul iki kıta arasında yer alır. Bunlar hangileridir?",
+        "q_en": "Istanbul is situated between two continents. Which ones?",
+        "correct": "Avrupa ve Asya",
+        "correct_en": "Europe and Asia",
+        "options_tr": ["Avrupa ve Asya", "Avrupa ve Afrika", "Asya ve Afrika", "Asya ve Amerika"],
+        "options_en": ["Europe and Asia", "Europe and Africa", "Asia and Africa", "Asia and America"]
+      },
+      {
+        "q_tr": "İstanbul Boğazı'nın diğer adı nedir?",
+        "q_en": "What is the other name of the Istanbul Strait?",
+        "correct": "Boğaziçi",
+        "correct_en": "Bosphorus",
+        "options_tr": ["Boğaziçi", "Çanakkale", "Kerç", "Messina"],
+        "options_en": ["Bosphorus", "Dardanelles", "Kerch", "Messina"]
+      }
+    ]
+  },
+  "35": {
+    "name": "İzmir",
+    "questions": [
+      {
+        "q_tr": "İzmir'in plaka kodu kaçtır?",
+        "q_en": "What is İzmir's license plate code?",
+        "correct": "35",
+        "options_tr": ["35", "16", "34", "48"],
+        "options_en": ["35", "16", "34", "48"]
+      },
+      {
+        "q_tr": "İzmir hangi bölgede yer alır?",
+        "q_en": "In which region is İzmir located?",
+        "correct": "Ege Bölgesi",
+        "correct_en": "Aegean Region",
+        "options_tr": ["Ege Bölgesi", "Marmara Bölgesi", "Akdeniz Bölgesi", "İç Anadolu"],
+        "options_en": ["Aegean Region", "Marmara Region", "Mediterranean Region", "Central Anatolia"]
+      },
+      {
+        "q_tr": "İzmir'in tarihî körfezi hangi adla bilinir?",
+        "q_en": "By what name is İzmir's historic bay known?",
+        "correct": "İzmir Körfezi",
+        "correct_en": "Gulf of İzmir",
+        "options_tr": ["İzmir Körfezi", "Edremit Körfezi", "Kuşadası Körfezi", "Saros Körfezi"],
+        "options_en": ["Gulf of İzmir", "Gulf of Edremit", "Gulf of Kuşadası", "Gulf of Saros"]
+      }
+    ]
+  },
+  "16": {
+    "name": "Bursa",
+    "questions": [
+      {
+        "q_tr": "Bursa'nın plaka kodu kaçtır?",
+        "q_en": "What is Bursa's license plate code?",
+        "correct": "16",
+        "options_tr": ["16", "34", "26", "10"],
+        "options_en": ["16", "34", "26", "10"]
+      },
+      {
+        "q_tr": "Hangi ünlü dağ Bursa'da bulunur?",
+        "q_en": "Which famous mountain is located in Bursa?",
+        "correct": "Uludağ",
+        "options_tr": ["Uludağ", "Erciyes", "Nemrut", "Ararat"],
+        "options_en": ["Uludağ", "Erciyes", "Nemrut", "Ararat"]
+      }
+    ]
+  },
+  "1": {
+    "name": "Adana",
+    "questions": [
+      {
+        "q_tr": "Adana'nın plaka kodu kaçtır?",
+        "q_en": "What is Adana's license plate code?",
+        "correct": "01",
+        "options_tr": ["01", "33", "31", "46"],
+        "options_en": ["01", "33", "31", "46"]
+      },
+      {
+        "q_tr": "Adana hangi coğrafi bölgede yer alır?",
+        "q_en": "In which geographical region is Adana located?",
+        "correct": "Akdeniz Bölgesi",
+        "correct_en": "Mediterranean Region",
+        "options_tr": ["Akdeniz Bölgesi", "İç Anadolu", "Güneydoğu Anadolu", "Ege Bölgesi"],
+        "options_en": ["Mediterranean Region", "Central Anatolia", "Southeastern Anatolia", "Aegean Region"]
+      },
+      {
+        "q_tr": "Adana hangi ırmak kıyısında kurulmuştur?",
+        "q_en": "On which river was Adana founded?",
+        "correct": "Seyhan",
+        "options_tr": ["Seyhan", "Ceyhan", "Kızılırmak", "Fırat"],
+        "options_en": ["Seyhan", "Ceyhan", "Kızılırmak", "Euphrates"]
+      }
+    ]
+  },
+  "27": {
+    "name": "Gaziantep",
+    "questions": [
+      {
+        "q_tr": "Gaziantep'in plaka kodu kaçtır?",
+        "q_en": "What is Gaziantep's license plate code?",
+        "correct": "27",
+        "options_tr": ["27", "63", "37", "47"],
+        "options_en": ["27", "63", "37", "47"]
+      },
+      {
+        "q_tr": "Gaziantep hangi bölgede yer alır?",
+        "q_en": "In which region is Gaziantep located?",
+        "correct": "Güneydoğu Anadolu",
+        "correct_en": "Southeastern Anatolia",
+        "options_tr": ["Güneydoğu Anadolu", "Doğu Anadolu", "Akdeniz Bölgesi", "İç Anadolu"],
+        "options_en": ["Southeastern Anatolia", "Eastern Anatolia", "Mediterranean Region", "Central Anatolia"]
+      },
+      {
+        "q_tr": "Gaziantep hangi ünlü yiyeceğiyle tanınır?",
+        "q_en": "For which famous food is Gaziantep known?",
+        "correct": "Baklava",
+        "options_tr": ["Baklava", "Lahmacun", "Mantı", "Pide"],
+        "options_en": ["Baklava", "Lahmacun", "Mantı", "Pide"]
+      }
+    ]
+  },
+  "25": {
+    "name": "Erzurum",
+    "questions": [
+      {
+        "q_tr": "Erzurum'un plaka kodu kaçtır?",
+        "q_en": "What is Erzurum's license plate code?",
+        "correct": "25",
+        "options_tr": ["25", "24", "26", "23"],
+        "options_en": ["25", "24", "26", "23"]
+      },
+      {
+        "q_tr": "Erzurum hangi coğrafi bölgededir?",
+        "q_en": "In which geographical region is Erzurum?",
+        "correct": "Doğu Anadolu",
+        "correct_en": "Eastern Anatolia",
+        "options_tr": ["Doğu Anadolu", "Karadeniz Bölgesi", "İç Anadolu", "Güneydoğu Anadolu"],
+        "options_en": ["Eastern Anatolia", "Black Sea Region", "Central Anatolia", "Southeastern Anatolia"]
+      },
+      {
+        "q_tr": "Erzurum Türkiye'nin hangi özelliğiyle öne çıkar?",
+        "q_en": "For what is Erzurum particularly noted in Turkey?",
+        "correct": "En soğuk şehirlerden biri",
+        "correct_en": "One of the coldest cities",
+        "options_tr": ["En soğuk şehirlerden biri", "En sıcak şehirlerden biri", "En kalabalık şehir", "En büyük liman"],
+        "options_en": ["One of the coldest cities", "One of the hottest cities", "The most populous city", "The largest port"]
+      }
+    ]
+  },
+  "61": {
+    "name": "Trabzon",
+    "questions": [
+      {
+        "q_tr": "Trabzon'un plaka kodu kaçtır?",
+        "q_en": "What is Trabzon's license plate code?",
+        "correct": "61",
+        "options_tr": ["61", "52", "55", "57"],
+        "options_en": ["61", "52", "55", "57"]
+      },
+      {
+        "q_tr": "Trabzon hangi denize kıyısında yer alır?",
+        "q_en": "On which sea is Trabzon located?",
+        "correct": "Karadeniz",
+        "correct_en": "Black Sea",
+        "options_tr": ["Karadeniz", "Marmara Denizi", "Ege Denizi", "Akdeniz"],
+        "options_en": ["Black Sea", "Sea of Marmara", "Aegean Sea", "Mediterranean Sea"]
+      },
+      {
+        "q_tr": "Trabzon hangi futbol takımıyla ünlüdür?",
+        "q_en": "Which football team is Trabzon famous for?",
+        "correct": "Trabzonspor",
+        "options_tr": ["Trabzonspor", "Bursaspor", "Rizespor", "Giresunspor"],
+        "options_en": ["Trabzonspor", "Bursaspor", "Rizespor", "Giresunspor"]
+      }
+    ]
+  },
+  "42": {
+    "name": "Konya",
+    "questions": [
+      {
+        "q_tr": "Konya'nın plaka kodu kaçtır?",
+        "q_en": "What is Konya's license plate code?",
+        "correct": "42",
+        "options_tr": ["42", "38", "68", "71"],
+        "options_en": ["42", "38", "68", "71"]
+      },
+      {
+        "q_tr": "Konya Türkiye'nin en büyük illerinden biri olarak hangi özelliğiyle öne çıkar?",
+        "q_en": "For which feature is Konya notable as one of Turkey's largest provinces?",
+        "correct": "Yüzölçümü en büyük il",
+        "correct_en": "Largest province by area",
+        "options_tr": ["Yüzölçümü en büyük il", "Nüfusu en fazla il", "En uzun kıyı şeridi", "En yüksek rakım"],
+        "options_en": ["Largest province by area", "Most populous province", "Longest coastline", "Highest altitude"]
+      },
+      {
+        "q_tr": "Hz. Mevlana'nın türbesi hangi şehirdedir?",
+        "q_en": "In which city is the tomb of Rumi (Mevlana) located?",
+        "correct": "Konya",
+        "options_tr": ["Konya", "Bursa", "Kayseri", "Sivas"],
+        "options_en": ["Konya", "Bursa", "Kayseri", "Sivas"]
+      }
+    ]
+  },
+  "38": {
+    "name": "Kayseri",
+    "questions": [
+      {
+        "q_tr": "Kayseri'nin plaka kodu kaçtır?",
+        "q_en": "What is Kayseri's license plate code?",
+        "correct": "38",
+        "options_tr": ["38", "42", "68", "58"],
+        "options_en": ["38", "42", "68", "58"]
+      },
+      {
+        "q_tr": "Kayseri'ye yakın hangi yanardağ bulunur?",
+        "q_en": "Which volcano is near Kayseri?",
+        "correct": "Erciyes Dağı",
+        "options_tr": ["Erciyes Dağı", "Süphan Dağı", "Tendürek", "Nemrut"],
+        "options_en": ["Mount Erciyes", "Mount Süphan", "Tendürek", "Nemrut"]
+      },
+      {
+        "q_tr": "Kayseri hangi bölgede yer alır?",
+        "q_en": "In which region is Kayseri located?",
+        "correct": "İç Anadolu",
+        "correct_en": "Central Anatolia",
+        "options_tr": ["İç Anadolu", "Doğu Anadolu", "Ege", "Akdeniz"],
+        "options_en": ["Central Anatolia", "Eastern Anatolia", "Aegean", "Mediterranean"]
+      }
+    ]
+  },
+  "55": {
+    "name": "Samsun",
+    "questions": [
+      {
+        "q_tr": "Samsun'un plaka kodu kaçtır?",
+        "q_en": "What is Samsun's license plate code?",
+        "correct": "55",
+        "options_tr": ["55", "61", "52", "57"],
+        "options_en": ["55", "61", "52", "57"]
+      },
+      {
+        "q_tr": "Atatürk Kurtuluş Savaşı'nı başlatmak için hangi şehire ayak bastı?",
+        "q_en": "In which city did Atatürk land to start the War of Independence?",
+        "correct": "Samsun",
+        "options_tr": ["Samsun", "Trabzon", "Giresun", "Sinop"],
+        "options_en": ["Samsun", "Trabzon", "Giresun", "Sinop"]
+      }
+    ]
+  },
+  "58": {
+    "name": "Sivas",
+    "questions": [
+      {
+        "q_tr": "Sivas'ın plaka kodu kaçtır?",
+        "q_en": "What is Sivas's license plate code?",
+        "correct": "58",
+        "options_tr": ["58", "44", "60", "68"],
+        "options_en": ["58", "44", "60", "68"]
+      },
+      {
+        "q_tr": "Sivas Kongresi hangi yılda gerçekleşmiştir?",
+        "q_en": "In which year did the Sivas Congress take place?",
+        "correct": "1919",
+        "options_tr": ["1919", "1920", "1918", "1923"],
+        "options_en": ["1919", "1920", "1918", "1923"]
+      }
+    ]
+  },
+  "26": {
+    "name": "Eskişehir",
+    "questions": [
+      {
+        "q_tr": "Eskişehir'in plaka kodu kaçtır?",
+        "q_en": "What is Eskişehir's license plate code?",
+        "correct": "26",
+        "options_tr": ["26", "16", "06", "58"],
+        "options_en": ["26", "16", "06", "58"]
+      },
+      {
+        "q_tr": "Eskişehir hangi nehir kıyısında kurulmuştur?",
+        "q_en": "On which river was Eskişehir founded?",
+        "correct": "Porsuk",
+        "options_tr": ["Porsuk", "Sakarya", "Kızılırmak", "Seyhan"],
+        "options_en": ["Porsuk", "Sakarya", "Kızılırmak", "Seyhan"]
+      }
+    ]
+  },
+  "7": {
+    "name": "Antalya",
+    "questions": [
+      {
+        "q_tr": "Antalya'nın plaka kodu kaçtır?",
+        "q_en": "What is Antalya's license plate code?",
+        "correct": "07",
+        "options_tr": ["07", "01", "33", "48"],
+        "options_en": ["07", "01", "33", "48"]
+      },
+      {
+        "q_tr": "Antalya hangi deniz kıyısındadır?",
+        "q_en": "On which sea is Antalya located?",
+        "correct": "Akdeniz",
+        "correct_en": "Mediterranean Sea",
+        "options_tr": ["Akdeniz", "Ege Denizi", "Karadeniz", "Marmara Denizi"],
+        "options_en": ["Mediterranean Sea", "Aegean Sea", "Black Sea", "Sea of Marmara"]
+      },
+      {
+        "q_tr": "Antalya hangi antik bölgenin merkez şehridir?",
+        "q_en": "Antalya is the central city of which ancient region?",
+        "correct": "Pamfilya",
+        "correct_en": "Pamphylia",
+        "options_tr": ["Pamfilya", "Likya", "Frigya", "Kapadokya"],
+        "options_en": ["Pamphylia", "Lycia", "Phrygia", "Cappadocia"]
+      }
+    ]
+  },
+  "31": {
+    "name": "Hatay",
+    "questions": [
+      {
+        "q_tr": "Hatay'ın plaka kodu kaçtır?",
+        "q_en": "What is Hatay's license plate code?",
+        "correct": "31",
+        "options_tr": ["31", "27", "33", "01"],
+        "options_en": ["31", "27", "33", "01"]
+      },
+      {
+        "q_tr": "Hatay hangi ülkeyle sınır paylaşır?",
+        "q_en": "With which country does Hatay share a border?",
+        "correct": "Suriye",
+        "correct_en": "Syria",
+        "options_tr": ["Suriye", "Irak", "İran", "Ermenistan"],
+        "options_en": ["Syria", "Iraq", "Iran", "Armenia"]
+      }
+    ]
+  },
+  "33": {
+    "name": "Mersin",
+    "questions": [
+      {
+        "q_tr": "Mersin'in plaka kodu kaçtır?",
+        "q_en": "What is Mersin's license plate code?",
+        "correct": "33",
+        "options_tr": ["33", "01", "31", "07"],
+        "options_en": ["33", "01", "31", "07"]
+      },
+      {
+        "q_tr": "Mersin'de Türkiye'nin en büyük limanlarından biri bulunur. Bu liman hangisidir?",
+        "q_en": "Which major port is located in Mersin?",
+        "correct": "Mersin Limanı",
+        "correct_en": "Port of Mersin",
+        "options_tr": ["Mersin Limanı", "İskenderun Limanı", "Samsun Limanı", "Trabzon Limanı"],
+        "options_en": ["Port of Mersin", "Port of İskenderun", "Port of Samsun", "Port of Trabzon"]
+      }
+    ]
+  },
+  "45": {
+    "name": "Manisa",
+    "questions": [
+      {
+        "q_tr": "Manisa'nın plaka kodu kaçtır?",
+        "q_en": "What is Manisa's license plate code?",
+        "correct": "45",
+        "options_tr": ["45", "35", "20", "48"],
+        "options_en": ["45", "35", "20", "48"]
+      },
+      {
+        "q_tr": "Manisa hangi dağın eteklerinde kurulmuştur?",
+        "q_en": "At the foot of which mountain is Manisa located?",
+        "correct": "Spil Dağı",
+        "options_tr": ["Spil Dağı", "Uludağ", "Erciyes", "Kazdağı"],
+        "options_en": ["Mount Spil", "Uludağ", "Erciyes", "Kazdağı"]
+      }
+    ]
+  },
+  "20": {
+    "name": "Denizli",
+    "questions": [
+      {
+        "q_tr": "Denizli'nin plaka kodu kaçtır?",
+        "q_en": "What is Denizli's license plate code?",
+        "correct": "20",
+        "options_tr": ["20", "45", "35", "48"],
+        "options_en": ["20", "45", "35", "48"]
+      },
+      {
+        "q_tr": "Pamuklu travertenler hangi Denizli ilçesinde bulunur?",
+        "q_en": "In which district of Denizli are the cotton travertines (Pamukkale) found?",
+        "correct": "Pamukkale",
+        "options_tr": ["Pamukkale", "Laodikeia", "Hierapolis", "Aphrodisias"],
+        "options_en": ["Pamukkale", "Laodikeia", "Hierapolis", "Aphrodisias"]
+      }
+    ]
+  },
+  "48": {
+    "name": "Muğla",
+    "questions": [
+      {
+        "q_tr": "Muğla'nın plaka kodu kaçtır?",
+        "q_en": "What is Muğla's license plate code?",
+        "correct": "48",
+        "options_tr": ["48", "09", "35", "07"],
+        "options_en": ["48", "09", "35", "07"]
+      },
+      {
+        "q_tr": "Bodrum ve Marmaris hangi ilin ilçeleridir?",
+        "q_en": "Bodrum and Marmaris are districts of which province?",
+        "correct": "Muğla",
+        "options_tr": ["Muğla", "Antalya", "İzmir", "Aydın"],
+        "options_en": ["Muğla", "Antalya", "İzmir", "Aydın"]
+      }
+    ]
+  },
+  "10": {
+    "name": "Balıkesir",
+    "questions": [
+      {
+        "q_tr": "Balıkesir'in plaka kodu kaçtır?",
+        "q_en": "What is Balıkesir's license plate code?",
+        "correct": "10",
+        "options_tr": ["10", "16", "45", "24"],
+        "options_en": ["10", "16", "45", "24"]
+      },
+      {
+        "q_tr": "Balıkesir hem Marmara hem de hangi bölgenin sınırındadır?",
+        "q_en": "Balıkesir borders both the Marmara region and which other region?",
+        "correct": "Ege Bölgesi",
+        "correct_en": "Aegean Region",
+        "options_tr": ["Ege Bölgesi", "Akdeniz Bölgesi", "İç Anadolu", "Karadeniz Bölgesi"],
+        "options_en": ["Aegean Region", "Mediterranean Region", "Central Anatolia", "Black Sea Region"]
+      }
+    ]
+  },
+  "41": {
+    "name": "Kocaeli",
+    "questions": [
+      {
+        "q_tr": "Kocaeli'nin plaka kodu kaçtır?",
+        "q_en": "What is Kocaeli's license plate code?",
+        "correct": "41",
+        "options_tr": ["41", "34", "54", "22"],
+        "options_en": ["41", "34", "54", "22"]
+      },
+      {
+        "q_tr": "Kocaeli'nin eski adı nedir?",
+        "q_en": "What is the old name of Kocaeli?",
+        "correct": "İzmit",
+        "options_tr": ["İzmit", "Adapazarı", "Gebze", "Hereke"],
+        "options_en": ["İzmit", "Adapazarı", "Gebze", "Hereke"]
+      }
+    ]
+  },
+  "54": {
+    "name": "Sakarya",
+    "questions": [
+      {
+        "q_tr": "Sakarya'nın plaka kodu kaçtır?",
+        "q_en": "What is Sakarya's license plate code?",
+        "correct": "54",
+        "options_tr": ["54", "41", "22", "77"],
+        "options_en": ["54", "41", "22", "77"]
+      },
+      {
+        "q_tr": "Sakarya ilinin merkez ilçesi hangisidir?",
+        "q_en": "What is the central district of Sakarya province?",
+        "correct": "Adapazarı",
+        "options_tr": ["Adapazarı", "Karasu", "Hendek", "Akyazı"],
+        "options_en": ["Adapazarı", "Karasu", "Hendek", "Akyazı"]
+      }
+    ]
+  },
+  "63": {
+    "name": "Şanlıurfa",
+    "questions": [
+      {
+        "q_tr": "Şanlıurfa'nın plaka kodu kaçtır?",
+        "q_en": "What is Şanlıurfa's license plate code?",
+        "correct": "63",
+        "options_tr": ["63", "27", "21", "37"],
+        "options_en": ["63", "27", "21", "37"]
+      },
+      {
+        "q_tr": "Şanlıurfa hangi tarihi bölgenin önemli şehridir?",
+        "q_en": "Şanlıurfa is an important city of which historical region?",
+        "correct": "Mezopotamya",
+        "correct_en": "Mesopotamia",
+        "options_tr": ["Mezopotamya", "Kapadokya", "Likya", "Bitinya"],
+        "options_en": ["Mesopotamia", "Cappadocia", "Lycia", "Bithynia"]
+      },
+      {
+        "q_tr": "Şanlıurfa'da bulunan Göbeklitepe hangi öneme sahiptir?",
+        "q_en": "What is the significance of Göbeklitepe in Şanlıurfa?",
+        "correct": "Dünyanın en eski tapınağı",
+        "correct_en": "World's oldest temple",
+        "options_tr": ["Dünyanın en eski tapınağı", "En büyük göl", "En uzun köprü", "En büyük pazar"],
+        "options_en": ["World's oldest temple", "Largest lake", "Longest bridge", "Largest bazaar"]
+      }
+    ]
+  },
+  "21": {
+    "name": "Diyarbakır",
+    "questions": [
+      {
+        "q_tr": "Diyarbakır'ın plaka kodu kaçtır?",
+        "q_en": "What is Diyarbakır's license plate code?",
+        "correct": "21",
+        "options_tr": ["21", "63", "47", "72"],
+        "options_en": ["21", "63", "47", "72"]
+      },
+      {
+        "q_tr": "Diyarbakır hangi nehir kıyısında yer alır?",
+        "q_en": "On which river is Diyarbakır located?",
+        "correct": "Dicle",
+        "correct_en": "Tigris",
+        "options_tr": ["Dicle", "Fırat", "Murat", "Kızılırmak"],
+        "options_en": ["Tigris", "Euphrates", "Murat", "Kızılırmak"]
+      },
+      {
+        "q_tr": "Diyarbakır surları hangi malzemeden yapılmıştır?",
+        "q_en": "From what material are the walls of Diyarbakır made?",
+        "correct": "Bazalt",
+        "options_tr": ["Bazalt", "Mermer", "Granit", "Kireçtaşı"],
+        "options_en": ["Basalt", "Marble", "Granite", "Limestone"]
+      }
+    ]
+  },
+  "23": {
+    "name": "Elazığ",
+    "questions": [
+      {
+        "q_tr": "Elazığ'ın plaka kodu kaçtır?",
+        "q_en": "What is Elazığ's license plate code?",
+        "correct": "23",
+        "options_tr": ["23", "24", "44", "62"],
+        "options_en": ["23", "24", "44", "62"]
+      },
+      {
+        "q_tr": "Elazığ yakınlarındaki büyük baraj gölü hangisidir?",
+        "q_en": "Which large reservoir is near Elazığ?",
+        "correct": "Keban Barajı",
+        "correct_en": "Keban Dam",
+        "options_tr": ["Keban Barajı", "Atatürk Barajı", "Karakaya Barajı", "Birecik Barajı"],
+        "options_en": ["Keban Dam", "Atatürk Dam", "Karakaya Dam", "Birecik Dam"]
+      }
+    ]
+  },
+  "65": {
+    "name": "Van",
+    "questions": [
+      {
+        "q_tr": "Van'ın plaka kodu kaçtır?",
+        "q_en": "What is Van's license plate code?",
+        "correct": "65",
+        "options_tr": ["65", "76", "13", "72"],
+        "options_en": ["65", "76", "13", "72"]
+      },
+      {
+        "q_tr": "Van Gölü Türkiye'nin en büyük gölüdür. Ne tür bir göldür?",
+        "q_en": "Lake Van is Turkey's largest lake. What type of lake is it?",
+        "correct": "Soda gölü",
+        "correct_en": "Soda lake",
+        "options_tr": ["Soda gölü", "Tatlı su gölü", "Lagün", "Buzul gölü"],
+        "options_en": ["Soda lake", "Freshwater lake", "Lagoon", "Glacial lake"]
+      },
+      {
+        "q_tr": "Van'ın hangi ülkeyle sınırı vardır?",
+        "q_en": "With which country does Van share a border?",
+        "correct": "İran",
+        "correct_en": "Iran",
+        "options_tr": ["İran", "Irak", "Suriye", "Ermenistan"],
+        "options_en": ["Iran", "Iraq", "Syria", "Armenia"]
+      }
+    ]
+  },
+  "72": {
+    "name": "Batman",
+    "questions": [
+      {
+        "q_tr": "Batman'ın plaka kodu kaçtır?",
+        "q_en": "What is Batman's license plate code?",
+        "correct": "72",
+        "options_tr": ["72", "21", "63", "73"],
+        "options_en": ["72", "21", "63", "73"]
+      },
+      {
+        "q_tr": "Batman hangi bölgede yer alır?",
+        "q_en": "In which region is Batman located?",
+        "correct": "Güneydoğu Anadolu",
+        "correct_en": "Southeastern Anatolia",
+        "options_tr": ["Güneydoğu Anadolu", "Doğu Anadolu", "Akdeniz", "İç Anadolu"],
+        "options_en": ["Southeastern Anatolia", "Eastern Anatolia", "Mediterranean", "Central Anatolia"]
+      }
+    ]
+  },
+  "50": {
+    "name": "Nevşehir",
+    "questions": [
+      {
+        "q_tr": "Nevşehir'in plaka kodu kaçtır?",
+        "q_en": "What is Nevşehir's license plate code?",
+        "correct": "50",
+        "options_tr": ["50", "38", "68", "51"],
+        "options_en": ["50", "38", "68", "51"]
+      },
+      {
+        "q_tr": "Kapadokya bölgesi ağırlıklı olarak hangi ilin sınırları içindedir?",
+        "q_en": "Cappadocia is mainly within which province?",
+        "correct": "Nevşehir",
+        "options_tr": ["Nevşehir", "Kayseri", "Niğde", "Aksaray"],
+        "options_en": ["Nevşehir", "Kayseri", "Niğde", "Aksaray"]
+      },
+      {
+        "q_tr": "Kapadokya'nın ünlü peri bacaları nasıl oluşmuştur?",
+        "q_en": "How were Cappadocia's famous fairy chimneys formed?",
+        "correct": "Volkanik kül ve erozyon",
+        "correct_en": "Volcanic ash and erosion",
+        "options_tr": ["Volkanik kül ve erozyon", "Buzul aşındırması", "Deniz çökelimi", "Deprem"],
+        "options_en": ["Volcanic ash and erosion", "Glacial erosion", "Marine sediment", "Earthquake"]
+      }
+    ]
+  },
+  "8": {
+    "name": "Artvin",
+    "questions": [
+      {
+        "q_tr": "Artvin'in plaka kodu kaçtır?",
+        "q_en": "What is Artvin's license plate code?",
+        "correct": "08",
+        "options_tr": ["08", "57", "77", "61"],
+        "options_en": ["08", "57", "77", "61"]
+      },
+      {
+        "q_tr": "Artvin hangi ülkelerle sınır komşusudur?",
+        "q_en": "With which countries does Artvin share a border?",
+        "correct": "Gürcistan ve Ermenistan",
+        "correct_en": "Georgia and Armenia",
+        "options_tr": ["Gürcistan ve Ermenistan", "Gürcistan ve Rusya", "Azerbaycan ve Gürcistan", "Ermenistan ve İran"],
+        "options_en": ["Georgia and Armenia", "Georgia and Russia", "Azerbaijan and Georgia", "Armenia and Iran"]
+      }
+    ]
+  },
+  "2": {
+    "name": "Adıyaman",
+    "questions": [
+      {
+        "q_tr": "Adıyaman'ın plaka kodu kaçtır?",
+        "q_en": "What is Adıyaman's license plate code?",
+        "correct": "02",
+        "options_tr": ["02", "06", "27", "37"],
+        "options_en": ["02", "06", "27", "37"]
+      },
+      {
+        "q_tr": "Adıyaman'daki Nemrut Dağı hangi eserleriyle ünlüdür?",
+        "q_en": "Nemrut Mountain in Adıyaman is famous for which monuments?",
+        "correct": "Dev heykeller",
+        "correct_en": "Giant statues",
+        "options_tr": ["Dev heykeller", "Mağara resimleri", "Tarihi kaleler", "Antik sütunlar"],
+        "options_en": ["Giant statues", "Cave paintings", "Historic castles", "Ancient columns"]
+      }
+    ]
+  },
+  "4": {
+    "name": "Ağrı",
+    "questions": [
+      {
+        "q_tr": "Ağrı'nın plaka kodu kaçtır?",
+        "q_en": "What is Ağrı's license plate code?",
+        "correct": "04",
+        "options_tr": ["04", "14", "24", "34"],
+        "options_en": ["04", "14", "24", "34"]
+      },
+      {
+        "q_tr": "Türkiye'nin en yüksek dağı olan Ağrı Dağı kaç metredir?",
+        "q_en": "How high is Mount Ararat (Ağrı Dağı), Turkey's tallest mountain?",
+        "correct": "5137 metre",
+        "correct_en": "5137 metres",
+        "options_tr": ["5137 metre", "4000 metre", "3917 metre", "4744 metre"],
+        "options_en": ["5137 metres", "4000 metres", "3917 metres", "4744 metres"]
+      }
+    ]
+  },
+  "19": {
+    "name": "Çorum",
+    "questions": [
+      {
+        "q_tr": "Çorum'un plaka kodu kaçtır?",
+        "q_en": "What is Çorum's license plate code?",
+        "correct": "19",
+        "options_tr": ["19", "29", "39", "49"],
+        "options_en": ["19", "29", "39", "49"]
+      },
+      {
+        "q_tr": "Çorum hangi antik uygarlıkla öne çıkar?",
+        "q_en": "With which ancient civilization is Çorum associated?",
+        "correct": "Hitit",
+        "correct_en": "Hittite",
+        "options_tr": ["Hitit", "Frigya", "Lidya", "Urartu"],
+        "options_en": ["Hittite", "Phrygian", "Lydian", "Urartu"]
+      }
+    ]
+  },
+  "53": {
+    "name": "Rize",
+    "questions": [
+      {
+        "q_tr": "Rize'nin plaka kodu kaçtır?",
+        "q_en": "What is Rize's license plate code?",
+        "correct": "53",
+        "options_tr": ["53", "61", "08", "52"],
+        "options_en": ["53", "61", "08", "52"]
+      },
+      {
+        "q_tr": "Rize Türkiye'de neyin üretimiyle ünlüdür?",
+        "q_en": "For the production of what is Rize famous in Turkey?",
+        "correct": "Çay",
+        "correct_en": "Tea",
+        "options_tr": ["Çay", "Kahve", "Fındık", "Zeytinyağı"],
+        "options_en": ["Tea", "Coffee", "Hazelnut", "Olive oil"]
+      }
+    ]
+  },
+  "52": {
+    "name": "Ordu",
+    "questions": [
+      {
+        "q_tr": "Ordu'nun plaka kodu kaçtır?",
+        "q_en": "What is Ordu's license plate code?",
+        "correct": "52",
+        "options_tr": ["52", "55", "53", "28"],
+        "options_en": ["52", "55", "53", "28"]
+      },
+      {
+        "q_tr": "Ordu ili hangi ürünüyle dünyaca ünlüdür?",
+        "q_en": "For which product is Ordu province world-famous?",
+        "correct": "Fındık",
+        "correct_en": "Hazelnut",
+        "options_tr": ["Fındık", "Çay", "Elma", "Vişne"],
+        "options_en": ["Hazelnut", "Tea", "Apple", "Cherry"]
+      }
+    ]
+  },
+  "44": {
+    "name": "Malatya",
+    "questions": [
+      {
+        "q_tr": "Malatya'nın plaka kodu kaçtır?",
+        "q_en": "What is Malatya's license plate code?",
+        "correct": "44",
+        "options_tr": ["44", "23", "62", "38"],
+        "options_en": ["44", "23", "62", "38"]
+      },
+      {
+        "q_tr": "Malatya hangi meyvesiyle ünlüdür?",
+        "q_en": "For which fruit is Malatya famous?",
+        "correct": "Kayısı",
+        "correct_en": "Apricot",
+        "options_tr": ["Kayısı", "Elma", "Kiraz", "Üzüm"],
+        "options_en": ["Apricot", "Apple", "Cherry", "Grape"]
+      }
+    ]
+  },
+  "57": {
+    "name": "Sinop",
+    "questions": [
+      {
+        "q_tr": "Sinop'un plaka kodu kaçtır?",
+        "q_en": "What is Sinop's license plate code?",
+        "correct": "57",
+        "options_tr": ["57", "67", "37", "77"],
+        "options_en": ["57", "67", "37", "77"]
+      },
+      {
+        "q_tr": "Sinop Türkiye'nin neresinde bulunur?",
+        "q_en": "Where in Turkey is Sinop located?",
+        "correct": "En kuzey noktası",
+        "correct_en": "Northernmost point",
+        "options_tr": ["En kuzey noktası", "En güney noktası", "En doğu noktası", "En batı noktası"],
+        "options_en": ["Northernmost point", "Southernmost point", "Easternmost point", "Westernmost point"]
+      }
+    ]
+  },
+  "80": {
+    "name": "Osmaniye",
+    "questions": [
+      {
+        "q_tr": "Osmaniye'nin plaka kodu kaçtır?",
+        "q_en": "What is Osmaniye's license plate code?",
+        "correct": "80",
+        "options_tr": ["80", "01", "31", "46"],
+        "options_en": ["80", "01", "31", "46"]
+      },
+      {
+        "q_tr": "Osmaniye hangi ilin ayrılmasıyla kurulmuştur?",
+        "q_en": "Osmaniye was formed by separating from which province?",
+        "correct": "Adana",
+        "options_tr": ["Adana", "Gaziantep", "Mersin", "Hatay"],
+        "options_en": ["Adana", "Gaziantep", "Mersin", "Hatay"]
+      }
+    ]
+  },
+  "59": {
+    "name": "Tekirdağ",
+    "questions": [
+      {
+        "q_tr": "Tekirdağ'ın plaka kodu kaçtır?",
+        "q_en": "What is Tekirdağ's license plate code?",
+        "correct": "59",
+        "options_tr": ["59", "22", "39", "17"],
+        "options_en": ["59", "22", "39", "17"]
+      },
+      {
+        "q_tr": "Tekirdağ hangi denize kıyısındadır?",
+        "q_en": "On which sea is Tekirdağ located?",
+        "correct": "Marmara Denizi",
+        "correct_en": "Sea of Marmara",
+        "options_tr": ["Marmara Denizi", "Karadeniz", "Ege Denizi", "Akdeniz"],
+        "options_en": ["Sea of Marmara", "Black Sea", "Aegean Sea", "Mediterranean Sea"]
+      }
+    ]
+  },
+  "17": {
+    "name": "Çanakkale",
+    "questions": [
+      {
+        "q_tr": "Çanakkale'nin plaka kodu kaçtır?",
+        "q_en": "What is Çanakkale's license plate code?",
+        "correct": "17",
+        "options_tr": ["17", "10", "59", "22"],
+        "options_en": ["17", "10", "59", "22"]
+      },
+      {
+        "q_tr": "Çanakkale Boğazı'nın diğer adı nedir?",
+        "q_en": "What is the other name for the Çanakkale Strait?",
+        "correct": "Dardaneller",
+        "correct_en": "Dardanelles",
+        "options_tr": ["Dardaneller", "Boğaziçi", "Hellespontos", "Kerç"],
+        "options_en": ["Dardanelles", "Bosphorus", "Hellespont (historical)", "Kerch"]
+      },
+      {
+        "q_tr": "Antik Truva kalıntıları hangi ilimizde bulunur?",
+        "q_en": "The ruins of ancient Troy are found in which of our provinces?",
+        "correct": "Çanakkale",
+        "options_tr": ["Çanakkale", "Bursa", "İzmir", "Balıkesir"],
+        "options_en": ["Çanakkale", "Bursa", "İzmir", "Balıkesir"]
+      }
+    ]
+  }
+}

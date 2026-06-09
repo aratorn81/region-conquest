@@ -14,6 +14,138 @@ Roller: `Tester`, `Tasarımcı`, `Developer`, `Yönetici`.
 
 ---
 
+## [Developer] 2026-06-09 — 3 madde uygulandı: rozet metni, EN i18n düzeltmesi, Coğrafya Sınavı Modu
+
+`Claude_projeler/files/BolgeKapma_Mobil.html` ve `www/index.html` güncellendi. `files/assets/quiz/turkey_quiz.json` + `www/assets/quiz/turkey_quiz.json` oluşturuldu. `npx cap sync android` çalıştırıldı.
+
+**MADDE 1 — Rozet metni:**
+- `I18N.tr.left`: `'kaldı'` → `'il kaldı'`
+- `I18N.en.left`: `'left'` → `'regions left'`
+- `rem-badge` birleştirme mantığı (`rem + ' ' + t('left')`) değiştirilmedi.
+
+**MADDE 2 — EN i18n düzeltmeleri:**
+- `I18N.en.youPlacedSuffixEN`: `' place. Try again!'` → `'. Try again!'` (EN sonuç metni artık "You placed 3rd. Try again!" — çift "place" düzeltildi).
+- `I18N.tr.youPlacedSuffixEN` (ölü anahtar): silindi.
+- `I18N.tr.redLabel`, `I18N.tr.blueLabel`, `I18N.en.redLabel`, `I18N.en.blueLabel` (ölü anahtarlar): her iki sözlükten silindi.
+
+**MADDE 3 — Coğrafya Sınavı Modu:**
+- **HTML/CSS:** `#quiz-toggle-row` (mode-grid ile opp-grid arasına) ve `#quiz-sheet` (screen-game içine, bottom sheet overlay) eklendi. İlgili stiller `<style>` bloğuna eklendi.
+- **i18n:** `quizModeLabel`, `quizModeDesc`, `quizModeToggleOn/Off`, `quizTitle`, `quizCorrect`, `quizWrong`, `quizWrongHint`, `quizTimeUp` anahtarları TR ve EN sözlüklere eklendi.
+- **JS:** `QUIZ_DATA` fetch (graceful degradation ile), `quizModeOn`/`localStorage` kalıcılığı, `updateQuizToggleUI()`, `toggleQuizMode()`, `openQuizSheet()`, `closeQuizSheet()`, `handleQuizAnswer()`, `handleQuizTimeout()`, `getQuizQuestion()` (tekrar engelleme ile), `isHumanTurn()` fonksiyonları eklendi. 2p modunda her iki oyuncu da quiz alır.
+- **tap() intercept:** Oyuncu sırası + quizModeOn + veri mevcutsa `openQuizSheet()` tetiklenir; veri yoksa doğrudan `claim()`.
+- **Event listener:** `quiz-toggle-row` click → `toggleQuizMode()`; `applyLang()` içine `updateQuizToggleUI()` çağrısı eklendi.
+- **quiz JSON:** `files/assets/quiz/turkey_quiz.json` — 34 il, il başı 2-3 soru (toplamda 80+ soru). Kapsanan iller: Adana, Adıyaman, Ağrı, Ankara, Antalya, Artvin, Balıkesir, Batman, Bursa, Çanakkale, Çorum, Denizli, Diyarbakır, Elazığ, Erzurum, Eskişehir, Gaziantep, Hatay, İstanbul, İzmir, Kayseri, Kocaeli, Konya, Malatya, Manisa, Mersin, Muğla, Nevşehir, Ordu, Osmaniye, Rize, Sakarya, Samsun, Sinop, Sivas, Şanlıurfa, Tekirdağ, Trabzon, Van. Soru tipleri: plaka kodu, coğrafi bölge, komşu il/ülke, coğrafi/kültürel özellik.
+
+**Build senkronizasyonu:** `www/index.html` güncellendi, `www/assets/quiz/turkey_quiz.json` oluşturuldu, `npx cap sync android` çalıştırıldı (✓ "Sync finished in 0.104s").
+
+---
+
+## [Tasarımcı → Developer] 2026-06-09 — Coğrafya Sınavı Modu: Cilalanmış UX Tasarımı (Oyuncu Seçimli)
+
+PRD referansı: madde 5.2 (Mod Seçimi kart grid), 5.3 (bölge tıklama akışı), 9 (renk paleti), 10 (dokunmatik), 13 (klasör yapısı).
+Referans oyunlar: Seterra (yanlışta doğru cevap göster + öğretici bekleme), Trivia Crack/QuizUp (bottom sheet kalıbı — harita üstte, şıklar altta).
+
+### 1. Oyuncu Seçim Mekanizması
+
+Karar: `#mode-grid` altına, `#opp-grid` üstüne tam genişlik `#quiz-toggle-row` satırı eklenir (ayrı mod kartı değil — katman özelliği, her modla birleştirilebilir).
+
+Görünüm: `🎓 Sınav Modu` (sol, `data-i18n="quizModeLabel"`) + `İlleri bilirsen kap!` açıklama (`data-i18n="quizModeDesc"`) + sağda iOS tarzı toggle butonu (`#btn-quiz-toggle`).
+
+Stil (PRD 9 renk sistemiyle tutarlı):
+
+- Aktif: toggle `#f39c12` (PRD turuncu aksan) dolgu; satır arka planı `rgba(243,156,18,0.10); border: 1px solid rgba(243,156,18,0.30)`.
+- Pasif: `rgba(255,255,255,0.12)` arka plan; satır `opacity: 0.55` (özellik görünür ama soluk).
+- `border-radius: 14px` — mevcut `.mode-card` ile aynı.
+- Tüm satıra dokunulduğunda toggle tetiklenir; `scale(0.97)` on-press (mevcut kart davranışıyla tutarlı).
+- Durum `quizModeOn` (boolean), `localStorage` anahtarı `'quizMode'` — oturumlar arası kalıcı.
+
+### 2. Soru Ekranı UX Akışı — Bottom Sheet Overlay
+
+Karar: Haritanın üzerine **aşağıdan kayan yarı saydam bottom sheet** — tam ekran modal değil (harita görünür kalır, oyuncu seçtiği ili görebilir; telefonda baş parmak erişimi için ideal).
+
+Akış (PRD 5.3'ü genişletir):
+
+1. Oyuncu boş ile dokunur.
+2. Haptic (light impact — PRD md. 10 değişmez).
+3. Quiz modu açıksa: il henüz boyanmaz, sıra geçmez. Bottom sheet `translateY(100%)→translateY(0)`, `300ms ease-out` açılır.
+4. Oyuncu şık seçer → anında geri bildirim (onay butonu yok — seçime direkt reaksiyon).
+5. Doğruysa: 400ms sonra sheet kapanır, il boyanır + `sfxClaim` + parça sayısı (PRD 5.3 adım 3-7 devreye girer).
+6. Yanlışsa / süre dolarsa: 1200ms sonra sheet kapanır, il boyanmaz, sıra geçer.
+
+Bottom sheet içeriği (ekranın ~%42'si yükseklik — kısa ekranda bile haritanın üst yarısı görünür):
+
+```text
+drag handle (görsel çizgi — dismiss işlevi yok)
+📍 [İL ADI] HAKKINDA          [zaman çubuğu ━━━━━ ]
+Soru metni                                          
+[ A) seçenek ]    [ B) seçenek ]
+[ C) seçenek ]    [ D) seçenek ]
+[geri bildirim metin satırı — başta gizli]
+```
+
+Panel: `rgba(15,12,41,0.96)` + `backdrop-filter: blur(8px)` (PRD `#0f0c29` koyu arka plandan türetildi).
+
+Zaman çubuğu: 15 saniye; `height: 3px`, `#f39c12` turuncu → son 5s `#e74c3c` kırmızı; süre dolunca yanlış cevap işlemi.
+
+Şık butonları — 2x2 grid: `min-height: 52px` (PRD md. 10), `border-radius: 14px`, önekler `A)` `B)` `C)` `D)`. Varsayılan: `background: rgba(255,255,255,0.07); border: 1.5px solid rgba(255,255,255,0.12)`. `:active`: `scale(0.96)`.
+
+### 3. Doğru/Yanlış Geri Bildirimi
+
+Doğru: Seçilen buton → `rgba(39,174,96,0.45); border-color: #27ae60`. Diğer 3 buton `opacity: 0.35`. 400ms bekle. Mevcut `sfxClaim` çalar (PRD md. 7 — ek ses yok).
+
+Yanlış: Seçilen buton → `rgba(231,76,60,0.45); border-color: #e74c3c`. Doğru cevap butonu → soluk yeşil `rgba(39,174,96,0.25)` (oyuncu öğrenir). 1200ms bekle (Seterra kalıbı). Mevcut `sfxSplit` çalar.
+
+Geri bildirim satırı (butonların altında, başta `visibility:hidden`):
+
+- Doğru: `✅ Doğru! [il adı] senin oldu.` (yeşil `#27ae60`)
+- Yanlış: `❌ Yanlış — sıra rakibe geçti. (Doğru: [cevap])` (kırmızı `#e74c3c`)
+- Süre: `⏱ Süre doldu — sıra rakibe geçti.` (kırmızı)
+
+### 4. Yeni i18n Anahtarları (TR + EN)
+
+| Anahtar | TR | EN |
+| --- | --- | --- |
+| `quizModeLabel` | `Sınav Modu` | `Quiz Mode` |
+| `quizModeDesc` | `İlleri bilirsen kap!` | `Claim provinces you know!` |
+| `quizTitle` | `HAKKINDA` | `ABOUT` |
+| `quizCorrect` | `Doğru! [il] senin oldu.` | `Correct! [province] is yours.` |
+| `quizWrong` | `Yanlış — sıra rakibe geçti.` | `Wrong — turn passes to opponent.` |
+| `quizWrongHint` | `(Doğru: [cevap])` | `(Correct: [answer])` |
+| `quizTimeUp` | `Süre doldu — sıra rakibe geçti.` | `Time's up — turn passes to opponent.` |
+
+`[il]`/`[province]`/`[cevap]`/`[answer]` → çalışma zamanında basit string replace ile doldurulur.
+
+### 5. Veri Yapısı — `assets/quiz/turkey_quiz.json`
+
+```json
+{
+  "06": {
+    "name": "Ankara",
+    "questions": [
+      {
+        "q_tr": "Bu ilin plaka kodu kaçtır?",
+        "q_en": "What is this province's license plate code?",
+        "correct": "06",
+        "options_tr": ["06", "34", "16", "35"],
+        "options_en": ["06", "34", "16", "35"]
+      }
+    ]
+  }
+}
+```
+
+Tekrar engelleme: `usedQuestionIndices[ilKodu]` dizisiyle — tüm sorular bitince döngüye girer.
+
+### 6. Sınır ve Kenar Durumlar
+
+- AI hamlelerinde quiz tetiklenmez (sadece oyuncu sırası).
+- 2 Oyuncu modunda quiz açıksa her iki oyuncu da soru alır.
+- Süre (15s) dolarsa: yanlış cevap işlemi.
+- `turkey_quiz.json` yüklenmezse veya il için soru yoksa: quiz atlanır, il direkt boyanır (graceful degradation).
+- İlk sürüm kapsamı: en az 30-40 il, il başı en az 2 soru.
+
+---
+
 ## [Yönetici] 2026-06-08 — Bulundu ve düzeltildi: "eski müzik çalıyor" — kullanıcı stale (eski) build kopyasını test ediyormuş
 
 Kullanıcı geri bildirimi: "müzikler olmamış, eski müzik çalıyor". Araştırma sonucu **kod/dosya entegrasyonunda hata yoktu** — sorun bir **build/senkronizasyon** sorunuydu:
